@@ -1,31 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import fetch from 'isomorphic-fetch';
 
-const signIn = function(email, password) {
-    return dispatch => {
-        dispatch({
-            type: 'SIGN_IN'
-        });
-
-        fetch('http://pixelgendesign.com:8889/api/auth/signin', {
-            method: 'POST',
-            body: { email, password }
-        }).then(response => {
-            console.log('Response: ', response);
-            dispatch({
-                type: 'SIGN_IN_SUCCES',
-                response: response
-            });
-        }).catch(err => {
-            console.log('Error...');
-            dispatch({
-                type: 'SIGN_IN_ERROR'
-            });
-        });
-    };
-};
+import { signIn } from '../actions/authorizationActions';
 
 const mapStateToProps = function(state) {
     return {
