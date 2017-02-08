@@ -26,7 +26,7 @@ class Login extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.signIn(this.refs.email.value, this.refs.email.password);
+        this.props.signIn(this.refs.email.value, this.refs.password.value);
     }
 
     render() {

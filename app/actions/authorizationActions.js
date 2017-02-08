@@ -12,17 +12,24 @@ export const signIn = function(email, password) {
             type: SIGN_IN
         });
 
+        console.log(`Email: ${ email }, pass: ${ password }`);
+
         fetch('http://pixelgendesign.com:8889/api/auth/signin', {
             method: 'POST',
-            body: { email, password }
+            // credentials: 'include',
+            headers: {  
+                "Content-type": "application/json"  
+            },  
+            body: JSON.stringify({ email, password })
         }).then(response => {
             console.log('Response: ', response);
+            console.log(response.json().then(result => { console.log('result: ', result); }));
             dispatch({
                 type: SIGN_IN_SUCCESS,
                 response: response
             });
         }).catch(err => {
-            console.log('Error...');
+            console.error('Error...', err);
             dispatch({
                 type: SIGN_IN_ERROR
             });
