@@ -23,7 +23,7 @@ const mapDispatchToProps = function(dispatch) {
     }
 }
 
-class Main extends Component {
+class Users extends Component {
 
     render() {
         return (
@@ -46,4 +46,4 @@ class Main extends Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main)
+export default connect(mapStateToProps, mapDispatchToProps)(Users)

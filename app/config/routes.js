@@ -2,19 +2,22 @@ import React from 'react'
 import Main from '../components/layouts/Main';
 import Blank from '../components/layouts/Blank';
 
-import MainView from '../views/Main';
-import MinorView from '../views/Minor';
-import DashboardView from '../views/Dashboard';
+import LoginView from '../views/Login';
+import UsersView from '../views/Users';
+import DiscountsView from '../views/Discounts';
 
-import { Route, Router, IndexRedirect, browserHistory} from 'react-router';
+import { Route, Router, IndexRedirect, IndexRoute, browserHistory} from 'react-router';
 
 export default (
     <Router history={browserHistory}>
+        <Route path="/login" component={Blank}>
+            <IndexRoute component={LoginView}/>
+        </Route>
+        
         <Route path="/" component={Main}>
-            <IndexRedirect to="/main" />
-            <Route path="dashboard" component={DashboardView}> </Route>
-            <Route path="main" component={MainView}> </Route>
-            <Route path="minor" component={MinorView}> </Route>
+            <IndexRedirect to="/login" />
+            <Route path="discounts" component={DiscountsView}> </Route>
+            <Route path="users" component={UsersView}> </Route>
         </Route>
     </Router>
 

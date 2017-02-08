@@ -35,14 +35,11 @@ class Navigation extends Component {
                                 PGD
                             </div>
                         </li>
-                        <li className={this.activeRoute("/dashboard")}>
-                            <Link to="/dashboard"><i className="fa fa-th-large"></i> <span className="nav-label">Dashboard</span></Link>
+                        <li className={this.activeRoute("/discounts")}>
+                            <Link to="/discounts"><i className="fa fa-usd"></i> <span className="nav-label">Discounts</span></Link>
                         </li>
-                        <li className={this.activeRoute("/main")}>
-                            <Link to="/main"><i className="fa fa-th-large"></i> <span className="nav-label">Main view</span></Link>
-                        </li>
-                        <li className={this.activeRoute("/minor")}>
-                            <Link to="/minor"><i className="fa fa-th-large"></i> <span className="nav-label">Minor view</span></Link>
+                        <li className={this.activeRoute("/users")}>
+                            <Link to="/users"><i className="fa fa-th-large"></i> <span className="nav-label">Manage Users</span></Link>
                         </li>
                     </ul>
 
