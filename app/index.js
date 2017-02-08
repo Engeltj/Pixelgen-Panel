@@ -10,12 +10,27 @@ import jquery from 'jquery';
 import metismenu from 'metismenu';
 import bootstrap from 'bootstrap';
 
+const feathers = require('feathers/client');
+const rest = require('feathers-rest/client');
+const superagent = require('superagent');
+const host = 'http://pixelgendesign.com/api';
+const app = feathers()
+  .configure(rest(host).superagent(superagent));
+  
+export { app };
+export const SIGN_IN = {
+
+}
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.css';
 import 'animate.css/animate.min.css';
 import '../public/styles/style.scss';
 
 import countReducer from './reducers/count';
+import authReducer from './reducers/auth';
+
+import thunk from 'redux-thunk';
 
 const logger = store => next => action => {
     console.group(action.type);
@@ -29,9 +44,10 @@ const logger = store => next => action => {
 const store = createStore(
     combineReducers({
         routing: routerReducer,
-        count: countReducer
+        count: countReducer,
+        auth: authReducer
     }),
-    applyMiddleware(logger)
+    applyMiddleware(logger, thunk)
 );
 
 const history = syncHistoryWithStore(browserHistory, store);
