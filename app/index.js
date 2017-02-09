@@ -12,7 +12,7 @@ import bootstrap from 'bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.css';
-import 'animate.css/animate.min.css';
+import 'animate.css';
 import '../public/styles/style.scss';
 
 import countReducer from './reducers/count';
@@ -35,15 +35,13 @@ const store = createStore(
         count: countReducer,
         auth: authReducer
     }),
-    applyMiddleware(logger, thunk)
+    applyMiddleware(thunk/*, logger*/)
 );
 
 const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render((
     <Provider store={ store }>
-        <Router history={ history }>
-            { routes }
-        </Router>
+        { routes(history) }
     </Provider>
 ), document.getElementById('root'));
