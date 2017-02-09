@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { signOut } from '../../actions/authorizationActions';
+import { connect } from 'react-redux';
 import { Dropdown } from 'react-bootstrap';
 import { Link, Location } from 'react-router';
 
@@ -28,7 +30,7 @@ class Navigation extends Component {
                             <span className="clear"> <span className="block m-t-xs"> <strong className="font-bold">Example user</strong>
                              </span> <span className="text-muted text-xs block">Example position<b className="caret"></b></span> </span> </a>
                                 <ul className="dropdown-menu animated fadeInRight m-t-xs">
-                                    <li><a href="#"> Logout</a></li>
+                                    <li><a onClick={ this.props.signOut }> Logout</a></li>
                                 </ul>
                             </div>
                             <div className="logo-element">
@@ -48,4 +50,14 @@ class Navigation extends Component {
     }
 }
 
-export default Navigation
+const mapDispatchToProps = dispatch => ({
+    signOut() {
+        dispatch(signOut());
+    }
+});
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
