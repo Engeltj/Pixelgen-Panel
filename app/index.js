@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import routes from './config/routes';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
-import jquery from 'jquery';
-import metismenu from 'metismenu';
-import bootstrap from 'bootstrap';
+import 'jquery';
+import 'metismenu';
+import 'bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.css';
