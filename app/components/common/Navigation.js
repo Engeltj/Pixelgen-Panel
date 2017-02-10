@@ -34,7 +34,7 @@ class Navigation extends Component {
                             <a data-toggle="dropdown" className="dropdown-toggle" href="#">
                         <span className="clear"> <span className="block m-t-xs"> <strong className="font-bold">{ `${ firstname || '' } ${ lastname || '' }` }</strong>
                             </span> <span className="text-muted text-xs block">{ company }<b className="caret"></b></span> </span> </a>
-                            <ul className="dropdown-menu animated fadeInRight m-t-xs">
+                            <ul className="dropdown-menu m-t-xs">
                                 <li><a onClick={ this.props.signOut }> Logout</a></li>
                             </ul>
                         </div>

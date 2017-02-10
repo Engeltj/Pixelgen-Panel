@@ -7,10 +7,9 @@ import Header from '../components/common/Header';
 class Users extends Component {
 
     render() {
-        console.log('Rendering users..');
         return (
             <div>
-                <Header title="Manage Users">
+                <Header title="Manage User Accounts">
                     <Link to="/users">Users</Link>
                 </Header>
                 <div className="wrapper wrapper-content">
