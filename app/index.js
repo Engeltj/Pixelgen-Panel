@@ -16,6 +16,9 @@ import 'animate.css';
 import '../public/styles/style.scss';
 
 import authReducer from './reducers/auth';
+import usersReducer from './reducers/users';
+import discountsReducer from './reducers/discounts';
+
 import RequestService from './services/request';
 
 import thunk from 'redux-thunk';
@@ -32,7 +35,9 @@ const logger = store => next => action => {
 const store = createStore(
     combineReducers({
         routing: routerReducer,
-        auth: authReducer
+        auth: authReducer,
+        users: usersReducer,
+        discounts: discountsReducer,
     }),
     applyMiddleware(thunk/*, logger*/)
 );

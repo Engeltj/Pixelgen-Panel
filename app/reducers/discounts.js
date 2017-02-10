@@ -1,6 +1,5 @@
 const getInitialState = function() {
   return {
-    gettingUsers: true,
     gettingDiscounts: false
   };
 };
@@ -23,7 +22,7 @@ export default function(state, action) {
     case GET_USERS:
       return { ...state, ...getInitialState() };
     case GET_USER_DISCOUNTS:
-      return { ...state, ...{ gettingUsers: false, gettingDiscounts: true} };
+      return { ...state, ...{ gettingDiscounts: true} };
     default:
       return state;
   }
