@@ -55,7 +55,7 @@ class Discounts extends Component {
                                 </h1>
                                 {this.props.users.gettingUsers && <p>Loading...</p>}
                                 {this.props.users.users.map(user => {
-                                    return <p key={ i++ }>{ `${user.firstname} ${user.lastname}`}</p>;
+                                    return <p key={ i++ }>{ `${user.firstname} ${user.lastname} ${user.email}`}</p>;
                                 })}
                             </div>
                         </div>
