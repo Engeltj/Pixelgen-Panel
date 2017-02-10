@@ -1,1 +1,1 @@
-export * from './authorizationTypes';
+export * from './authTypes';

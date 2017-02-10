@@ -38,7 +38,7 @@ export const signIn = function(email, password) {
     return dispatch => {
         dispatch(signInRequest());
 
-        fetch('http://localhost:8889/api/auth/signin', {
+        fetch('http://10.10.10.200:8889/api/auth/signin', {
             method: 'POST',
             headers: {
                 "Content-type": "application/json"  

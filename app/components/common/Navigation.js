@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { signOut } from '../../actions/authorizationActions';
+import { signOut } from '../../actions/authActions';
 import { connect } from 'react-redux';
 import { Dropdown } from 'react-bootstrap';
 import { Link, Location } from 'react-router';
