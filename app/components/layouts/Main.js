@@ -6,6 +6,7 @@ import Footer from '../common/Footer';
 import TopHeader from '../common/TopHeader';
 import { correctHeight, detectBody } from './Helpers';
 import { signInWithToken } from '../../actions/authActions';
+import DevTools from '../developer/DevTools';
 
 const mapStateToProps = (state) => {
     return {
@@ -32,6 +33,7 @@ class Main extends React.Component {
         let wrapperClass = "gray-bg " + this.props.location.pathname;
         return (
             <div id="wrapper">
+                <DevTools />
                 <Progress />
                 <Navigation location={this.props.location}/>
 

@@ -14,17 +14,21 @@
   "author": "webapplayers",
   "devDependencies": {
     "babel-core": "^6.0.20",
-    "babel-eslint": "^4.1.3",
+    "babel-eslint": "^4.1.8",
     "babel-loader": "^6.0.1",
     "babel-preset-es2015": "^6.0.15",
     "babel-preset-react": "^6.0.15",
     "babel-preset-stage-0": "^6.0.15",
     "css-loader": "^0.23.1",
+    "eslint": "^3.15.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "node-sass": "^4.5.0",
     "path": "^0.12.7",
     "react-hot-loader": "^1.3.0",
+    "redux-devtools": "^3.3.2",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.2.0",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
@@ -53,5 +57,37 @@
     "redux-auth-wrapper": "^1.0.0",
     "redux-thunk": "^2.2.0",
     "request": "^2.79.0"
+  },
+  "xo": {
+    "space": true,
+    "parser": "babel-eslint",
+    "esnext": true,
+    "env": [
+      "node",
+      "es6"
+    ],
+    "rules": {
+      "eol-last": 0,
+      "unicorn/filename-case": 0,
+      "arrow-parens": [
+        "error",
+        "always"
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "operator-linebreak": [
+        "error",
+        "before"
+      ],
+      "import/no-unassigned-import": 0,
+      "no-use-extend-native/no-use-extend-native": 0,
+      "no-constant-condition": 0,
+      "quote-props": [
+        "error",
+        "always"
+      ]
+    }
   }
 }

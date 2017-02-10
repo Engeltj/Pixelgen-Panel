@@ -51,7 +51,7 @@ class Discounts extends Component {
                 <div className="wrapper wrapper-content">
                     <div className="row">
                         <div className="col-lg-12">
-                            <div className="text-center m-t-lg" style={{ userSelect: 'none' }}>
+                            <div className="m-t-lg" style={{ userSelect: 'none' }}>
                                 <IBox title="User Accounts">
                                     <div className="input-group">
                                         <input type="text" placeholder="Search client " className="input form-control" />

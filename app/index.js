@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router,  browserHistory  } from 'react-router';
 import routes from './config/routes';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
@@ -23,6 +23,8 @@ import RequestService from './services/request';
 
 import thunk from 'redux-thunk';
 
+import DevTools from './components/developer/DevTools';
+
 const logger = store => next => action => {
     console.group(action.type);
     console.info('Dispatching: ', action);
@@ -39,7 +41,7 @@ const store = createStore(
         users: usersReducer,
         discounts: discountsReducer,
     }),
-    applyMiddleware(thunk/*, logger*/)
+    compose(applyMiddleware(thunk/*, logger*/), DevTools.instrument())
 );
 
 export const request = new RequestService(store);
