@@ -1,6 +1,7 @@
 const getInitialState = function() {
   return {
-    gettingUsers: true
+    gettingUsers: false,
+    users: []
   };
 };
 
@@ -17,9 +18,8 @@ export default function(state, action) {
 
   switch (action.type) {
     case GET_USERS:
-      return { ...state, ...getInitialState() };
+      return { ...state, ...{ gettingUsers: true } };
     case GET_USERS_SUCCESS:
-      console.log(action.payload);
       return { ...state, ...{ gettingUsers: false, users: action.payload.users } };
     case GET_USERS_ERROR:
       return { ...state, ...{ gettingUsers: false } };
