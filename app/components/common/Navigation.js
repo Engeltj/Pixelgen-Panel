@@ -29,11 +29,13 @@ class Navigation extends Component {
             <nav className="navbar-default navbar-static-side " role="navigation">
                 <ul className="nav metismenu" id="side-menu" ref="menu">
                     <li className="nav-header">
-                        <div className="dropdown profile-element"> <span>
+                        <div className="dropdown profile-element text-center">
+                            <img src="img/logo_tile_sm.svg" width="70" />
+                             <span>
                             </span>
                             <a data-toggle="dropdown" className="dropdown-toggle" href="#">
-                        <span className="clear"> <span className="block m-t-xs"> <strong className="font-bold">{ `${firstname || ''} ${lastname || ''}` }</strong>
-                            </span> <span className="text-muted text-xs block">{ company }<b className="caret"></b></span> </span> </a>
+                        <span className="clear"> <span className="block m-t-xs"> {company}
+                            </span> <span className="text-muted text-xs block"><strong className="font-bold">{ `${firstname || ''} ${lastname || ''}` }&nbsp;</strong><b className="caret"></b></span> </span> </a>
                             <ul className="dropdown-menu m-t-xs">
                                 <li><a onClick={ this.props.signOut }> Logout</a></li>
                             </ul>
