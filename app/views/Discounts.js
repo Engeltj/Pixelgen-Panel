@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { getUsers } from '../actions/userActions';
 import Header from '../components/common/Header';
 import { Link } from 'react-router';
+import IBox from '../components/common/IBox'
+import UserItem from '../components/users/UserItem'
 // import { getDiscounts } from '../actions/discountActions';
 
 const mapStateToProps = function(state) {
@@ -50,13 +52,32 @@ class Discounts extends Component {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="text-center m-t-lg" style={{ userSelect: 'none' }}>
-                                <h1>
-                                    Hello there!
-                                </h1>
-                                {this.props.users.gettingUsers && <p>Loading...</p>}
-                                {this.props.users.users.map(user => {
-                                    return <p key={ i++ }>{ `${user.firstname} ${user.lastname} ${user.email}`}</p>;
-                                })}
+                                <IBox title="User Accounts">
+                                    <div className="input-group">
+                                        <input type="text" placeholder="Search client " className="input form-control" />
+                                        <span className="input-group-btn">
+                                                <button type="button" className="btn btn btn-primary"> <i className="fa fa-search"></i> Search</button>
+                                        </span>
+                                    </div>
+                                    <div className="clients-list">
+                                        <div className="full-height-scroll">
+                                            <div className="table-responsive">
+                                                <table className="table table-striped table-hover">
+                                                    <tbody>
+                                                        {this.props.users.users.map(user => {
+                                                            return <UserItem key={ user._id } user={user}/>;
+                                                        })}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    {this.props.users.gettingUsers && <p>Loading...</p>}
+                                    
+                                </IBox>
+                                
                             </div>
                         </div>
                     </div>

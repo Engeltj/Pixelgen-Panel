@@ -26,7 +26,7 @@ class Navigation extends Component {
     render() {
         const { firstname, lastname, company } = this.props.user;
         return (
-            <nav className="navbar-default navbar-static-side" role="navigation">
+            <nav className="navbar-default navbar-static-side " role="navigation">
                 <ul className="nav metismenu" id="side-menu" ref="menu">
                     <li className="nav-header">
                         <div className="dropdown profile-element"> <span>
