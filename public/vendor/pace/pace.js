@@ -1,3 +1,4 @@
+/* eslint-disable */
 //
 // Modified by @casesandberg to work via Node exports
 //
