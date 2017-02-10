@@ -35,7 +35,6 @@ class Discounts extends Component {
                                 Count: { this.props.count }
                             </h1>
                             <small>
-                                It is an application skeleton for a typical web app. You can use it to quickly bootstrap your webapp projects.
                             </small>
                         </div>
                     </div>

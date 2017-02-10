@@ -1,33 +1,35 @@
-export default class Request {
+export default class RequestService {
   constructor(store) {
     this.store = store;
+    
   }
 
   get(url) {
-    return __fetch(url, 'GET')
+    return this.__fetch(url, 'GET')
   }
 
   post(url, payload) {
-    return __fetch(url, 'POST', payload)
+    return this.__fetch(url, 'POST', payload)
   }
 
-  post(url, payload) {
-    return __fetch(url, 'PUT', payload)
+  put(url, payload) {
+    return this.__fetch(url, 'PUT', payload)
   }
 
   delete(url) {
-    return __fetch(url, 'DELETE')
+    return this.__fetch(url, 'DELETE')
   }
 
   __fetch(url, method, payload) {
-    return fetch(url, {
+    return fetch('http://localhost:8889'+url, {
         method: method,
         headers: {
             "Content-type": "application/json"  
         },
-        body: payload
+        body: JSON.stringify(payload)
     }).then(response => {
-        
+      console.log(response);
+      return response;
     });
   }
 

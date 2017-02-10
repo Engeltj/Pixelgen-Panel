@@ -17,6 +17,7 @@ import '../public/styles/style.scss';
 
 import countReducer from './reducers/count';
 import authReducer from './reducers/auth';
+import RequestService from './services/request';
 
 import thunk from 'redux-thunk';
 
@@ -37,6 +38,8 @@ const store = createStore(
     }),
     applyMiddleware(thunk/*, logger*/)
 );
+
+export const request = new RequestService(store);
 
 const history = syncHistoryWithStore(browserHistory, store);
 
