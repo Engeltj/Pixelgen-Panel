@@ -34,6 +34,7 @@
   "dependencies": {
     "animate.css": "^3.1.1",
     "bootstrap": "^3.3.7",
+    "classnames": "^2.2.5",
     "dom-tools": "^0.1.4",
     "font-awesome": "^4.7.0",
     "history": "^3.0.0",
