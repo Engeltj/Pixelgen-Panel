@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dropdown } from 'react-bootstrap';
 import { smoothlyMenu } from '../layouts/Helpers';
-import { signOut } from '../../actions/authorizationActions';
+import { signOut as authSignOut } from '../../actions/authActions';
 
 class TopHeader extends React.Component {
 
@@ -34,7 +34,7 @@ class TopHeader extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
     signOut() {
-        dispatch(signOut());
+        dispatch(authSignOut());
     }
 });
 

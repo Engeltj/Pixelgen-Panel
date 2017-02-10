@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import { signIn } from '../actions/authorizationActions';
+import { signIn } from '../actions/authActions';
 
 const mapStateToProps = function(state) {
     return {
