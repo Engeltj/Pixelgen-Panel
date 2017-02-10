@@ -1,3 +1,5 @@
+/* globals $ window */
+
 export function correctHeight() {
   const pageWrapper = $('#page-wrapper');
   const navbarHeight = $('nav.navbar-default').height();
