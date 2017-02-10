@@ -6,16 +6,16 @@ import { signOut as authSignOut } from '../../actions/authActions';
 
 class TopHeader extends React.Component {
 
-    toggleNavigation(e) {
-        e.preventDefault();
-        $("body").toggleClass("mini-navbar");
-        smoothlyMenu();
-    }
+  toggleNavigation(e) {
+    e.preventDefault();
+    $('body').toggleClass('mini-navbar');
+    smoothlyMenu();
+  }
 
-    render() {
-        return (
+  render() {
+    return (
             <div className="row border-bottom">
-                <nav className="navbar navbar-static-top white-bg" role="navigation" style={{marginBottom: 0}}>
+                <nav className="navbar navbar-static-top white-bg" role="navigation" style={{ 'marginBottom': 0 }}>
                     <div className="navbar-header">
                         <a className="navbar-minimalize minimalize-styl-2 btn btn-primary " onClick={this.toggleNavigation} href="#"><i className="fa fa-bars"></i> </a>
                     </div>
@@ -28,18 +28,18 @@ class TopHeader extends React.Component {
                     </ul>
                 </nav>
             </div>
-        )
-    }
+    );
+  }
 }
 
-const mapDispatchToProps = dispatch => ({
-    signOut() {
-        dispatch(authSignOut());
-    }
+const mapDispatchToProps = (dispatch) => ({
+  signOut() {
+    dispatch(authSignOut());
+  }
 });
 
-const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+const mapStateToProps = (state) => ({
+  'isAuthenticated': state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopHeader);

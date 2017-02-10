@@ -7,13 +7,13 @@ const UserItem = ({ user }) => {
       <td> {user.company}</td>
       <td className="contact-type"><i className="fa fa-envelope"> </i></td>
       <td> { user.email }</td>
-      {/*<td className="client-status"><span className="label label-primary">Active</span></td>*/}
+      {/* <td className="client-status"><span className="label label-primary">Active</span></td> */}
     </tr>
   );
 };
 
 UserItem.propTypes = {
-  user: PropTypes.object.isRequired
+  'user': PropTypes.object.isRequired
 };
 
 export default UserItem;

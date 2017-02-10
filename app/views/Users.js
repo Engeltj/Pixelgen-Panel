@@ -6,8 +6,8 @@ import Header from '../components/common/Header';
 
 class Users extends Component {
 
-    render() {
-        return (
+  render() {
+    return (
             <div>
                 <Header title="Manage User Accounts">
                     <Link to="/users">Users</Link>
@@ -15,7 +15,7 @@ class Users extends Component {
                 <div className="wrapper wrapper-content">
                     <div className="row">
                         <div className="col-lg-12">
-                            <div className="text-center m-t-lg" style={{ userSelect: 'none' }}>
+                            <div className="text-center m-t-lg" style={{ 'userSelect': 'none' }}>
                                 <h1>
                                     Poop
                                 </h1>
@@ -27,8 +27,8 @@ class Users extends Component {
                     </div>
                 </div>
             </div>
-        )
-    }
+    );
+  }
 
 }
 

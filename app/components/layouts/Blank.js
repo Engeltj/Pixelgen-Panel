@@ -2,21 +2,21 @@ import React from 'react';
 
 class Blank extends React.Component {
 
-    render() {
-        return (
+  render() {
+    return (
             <div>
                 {this.props.children}
             </div>
-        )
-    }
+    );
+  }
 
-    componentDidMount(){
-        $('body').addClass('gray-bg');
-    }
+  componentDidMount() {
+    $('body').addClass('gray-bg');
+  }
 
-    componentWillUnmount(){
-        $('body').removeClass('gray-bg');
-    }
+  componentWillUnmount() {
+    $('body').removeClass('gray-bg');
+  }
 }
 
-export default Blank
+export default Blank;

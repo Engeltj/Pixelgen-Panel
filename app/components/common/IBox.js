@@ -2,30 +2,25 @@ import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
 
 class IBox extends Component {
-    render() {
-        let i = 0;
-        let { children } = this.props;
+  render() {
+    const i = 0;
+    let { children } = this.props;
 
-        if (!_.isArray(children)) {
-            children = [children];
-        }
+    if (!_.isArray(children)) {
+      children = [children];
+    }
 
-        let numberOfChildren = children.length;
+    const numberOfChildren = children.length;
 
-        return (
+    return (
             <div className="ibox">
                 <div className="ibox-content">
                     <h2>{ this.props.title }</h2>
                     {this.props.children}
                 </div>
             </div>
-                    
-                            
 
-
-
-
-            /*<div className="row wrapper border-bottom white-bg page-heading">
+            /* <div className="row wrapper border-bottom white-bg page-heading">
                 <div className="col-lg-10">
                     <h2>{ this.props.title }</h2>
                     <ol className="breadcrumb">
@@ -38,13 +33,13 @@ class IBox extends Component {
                     </ol>
                 </div>
                 <div className="col-lg-2"></div>
-            </div>*/
+            </div> */
         );
-    }
+  }
 }
 
 IBox.propTypes = {
-    title: PropTypes.string.isRequired
+  'title': PropTypes.string.isRequired
 };
 
 export default IBox;

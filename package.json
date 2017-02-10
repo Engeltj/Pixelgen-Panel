@@ -83,7 +83,6 @@
       ],
       "import/no-unassigned-import": 0,
       "no-use-extend-native/no-use-extend-native": 0,
-      "no-constant-condition": 0,
       "quote-props": [
         "error",
         "always"

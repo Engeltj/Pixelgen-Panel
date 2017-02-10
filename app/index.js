@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router,  browserHistory  } from 'react-router';
+import { Router, browserHistory } from 'react-router';
 import routes from './config/routes';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
@@ -25,23 +25,23 @@ import thunk from 'redux-thunk';
 
 import DevTools from './components/developer/DevTools';
 
-const logger = store => next => action => {
-    console.group(action.type);
-    console.info('Dispatching: ', action);
-    let result = next(action);
-    console.log('Next state', store.getState());
-    console.groupEnd(action.type);
-    return result;
+const logger = (store) => (next) => (action) => {
+  console.group(action.type);
+  console.info('Dispatching: ', action);
+  const result = next(action);
+  console.log('Next state', store.getState());
+  console.groupEnd(action.type);
+  return result;
 };
 
 const store = createStore(
     combineReducers({
-        routing: routerReducer,
-        auth: authReducer,
-        users: usersReducer,
-        discounts: discountsReducer,
+      'routing': routerReducer,
+      'auth': authReducer,
+      'users': usersReducer,
+      'discounts': discountsReducer
     }),
-    compose(applyMiddleware(thunk/*, logger*/), DevTools.instrument())
+    compose(applyMiddleware(thunk/* , logger */), DevTools.instrument())
 );
 
 export const request = new RequestService(store);

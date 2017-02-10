@@ -4,62 +4,62 @@ import _ from 'lodash';
 
 import { signIn } from '../actions/authActions';
 
-const mapStateToProps = function(state) {
-    return {
-        auth: state.auth
-    };
-}
+const mapStateToProps = function (state) {
+  return {
+    'auth': state.auth
+  };
+};
 
-const mapDispatchToProps = function(dispatch) {
-    return {
-        signIn(email, password) {
-            dispatch(signIn(email, password))
-        }
+const mapDispatchToProps = function (dispatch) {
+  return {
+    signIn(email, password) {
+      dispatch(signIn(email, password));
     }
-}
+  };
+};
 
 class Login extends Component {
-    constructor(props) {
-        super(props);
-        _.bindAll(this, ['handleSubmit', 'onChange', 'checkAuth']);
+  constructor(props) {
+    super(props);
+    _.bindAll(this, ['handleSubmit', 'onChange', 'checkAuth']);
 
-        this.state = {
-            email: '',
-            password: ''
-        }
-    }
+    this.state = {
+      'email': '',
+      'password': ''
+    };
+  }
 
-    componentWillMount() {
-        this.checkAuth();
-    }
+  componentWillMount() {
+    this.checkAuth();
+  }
 
-    componentDidUpdate() {
-        this.checkAuth();
-    }
-    
-    checkAuth(props) {
-        if (this.props.auth.isAuthenticated) {
-            this.context.router.replace('/discounts');
-        }
-    }
+  componentDidUpdate() {
+    this.checkAuth();
+  }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        let { email, password } = this.state;
-        this.props.signIn(email, password);
+  checkAuth(props) {
+    if (this.props.auth.isAuthenticated) {
+      this.context.router.replace('/discounts');
     }
+  }
 
-    onChange(e) {
-        let { name, value } = e.target;
-        this.setState({ [name]: value });
-    }
+  handleSubmit(e) {
+    e.preventDefault();
+    const { email, password } = this.state;
+    this.props.signIn(email, password);
+  }
 
-    render() {
-        return (
+  onChange(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  }
+
+  render() {
+    return (
             <div className="middle-box text-center loginscreen  animated fadeIn">
                 <div>
                     <div>
-                        <h1 className="logo-name" style={{marginLeft:-13+'px'}}>PGD</h1>
+                        <h1 className="logo-name" style={{ 'marginLeft': -13 + 'px' }}>PGD</h1>
                     </div>
                     <h3>Welcome to Pixelgen</h3>
                     <p>Log in.</p>
@@ -77,12 +77,12 @@ class Login extends Component {
                     </form>
                 </div>
             </div>
-        )
-    }
+    );
+  }
 }
 
 Login.contextTypes = {
-    router: React.PropTypes.object.isRequired
+  'router': React.PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

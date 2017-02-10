@@ -9,29 +9,29 @@ import { signInWithToken } from '../../actions/authActions';
 import DevTools from '../developer/DevTools';
 
 const mapStateToProps = (state) => {
-    return {
-        user: state.auth.user,
-        isAuthenticated: state.auth.isAuthenticated
-    };
+  return {
+    'user': state.auth.user,
+    'isAuthenticated': state.auth.isAuthenticated
+  };
 };
 
-const mapDispatchToProps = dispatch => ({
-    signInWithToken() {
-        dispatch(signInWithToken());
-    }
+const mapDispatchToProps = (dispatch) => ({
+  signInWithToken() {
+    dispatch(signInWithToken());
+  }
 });
 
 class Main extends React.Component {
 
-    componentWillMount() {
-        if (this.props.isAuthenticated && !this.props.user) {
-            this.props.signInWithToken();
-        }
+  componentWillMount() {
+    if (this.props.isAuthenticated && !this.props.user) {
+      this.props.signInWithToken();
     }
+  }
 
-    render() {
-        let wrapperClass = "gray-bg " + this.props.location.pathname;
-        return (
+  render() {
+    const wrapperClass = 'gray-bg ' + this.props.location.pathname;
+    return (
             <div id="wrapper">
                 <DevTools />
                 <Progress />
@@ -49,24 +49,23 @@ class Main extends React.Component {
 
             </div>
 
-        )
-    }
+    );
+  }
 
-    componentDidMount() {
-
+  componentDidMount() {
         // Run correctHeight function on load and resize window event
-        $(window).bind("load resize", function() {
-            correctHeight();
-            detectBody();
-        });
+    $(window).bind('load resize', () => {
+      correctHeight();
+      detectBody();
+    });
 
         // Correct height of wrapper after metisMenu animation.
-        $('.metismenu a').click(() => {
-            setTimeout(() => {
-                correctHeight();
-            }, 300)
-        });
-    }
+    $('.metismenu a').click(() => {
+      setTimeout(() => {
+        correctHeight();
+      }, 300);
+    });
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

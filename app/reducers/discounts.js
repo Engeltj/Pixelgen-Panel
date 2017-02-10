@@ -1,6 +1,6 @@
-const getInitialState = function() {
+const getInitialState = function () {
   return {
-    gettingDiscounts: false
+    'gettingDiscounts': false
   };
 };
 
@@ -13,7 +13,7 @@ import {
   GET_USER_DISCOUNTS_ERROR
 } from '../enums';
 
-export default function(state, action) {
+export default function (state, action) {
   if (!state) {
     state = getInitialState();
   }
@@ -22,7 +22,7 @@ export default function(state, action) {
     case GET_USERS:
       return { ...state, ...getInitialState() };
     case GET_USER_DISCOUNTS:
-      return { ...state, ...{ gettingDiscounts: true} };
+      return { ...state, ...{ 'gettingDiscounts': true } };
     default:
       return state;
   }

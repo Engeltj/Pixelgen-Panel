@@ -1,11 +1,11 @@
-const getInitialState = function() {
-  let token = localStorage.getItem('token');
+const getInitialState = function () {
+  const token = localStorage.getItem('token');
 
   return {
-    user: null,
-    signingIn: false,
-    hasError: false,
-    isAuthenticated: !!token
+    'user': null,
+    'signingIn': false,
+    'hasError': false,
+    'isAuthenticated': Boolean(token)
   };
 };
 
@@ -16,7 +16,7 @@ import {
   SIGN_OUT
 } from '../enums';
 
-export default function(state, action) {
+export default function (state, action) {
   if (!state) {
     state = getInitialState();
   }
@@ -25,11 +25,11 @@ export default function(state, action) {
     case SIGN_OUT:
       return { ...state, ...getInitialState() };
     case SIGN_IN:
-      return { ...state, ...{ signingIn: true, hasError: false, isAuthenticated: false } };
+      return { ...state, ...{ 'signingIn': true, 'hasError': false, 'isAuthenticated': false } };
     case SIGN_IN_SUCCESS:
-      return { ...state, ...{ signingIn: false, hasError: false, isAuthenticated: true, user: action.payload.user } };
+      return { ...state, ...{ 'signingIn': false, 'hasError': false, 'isAuthenticated': true, 'user': action.payload.user } };
     case SIGN_IN_ERROR:
-      return { ...state, ...{ signingIn: false, hasError: true, error: action.error, isAuthenticated: false } };
+      return { ...state, ...{ 'signingIn': false, 'hasError': true, 'error': action.error, 'isAuthenticated': false } };
     default:
       return state;
   }

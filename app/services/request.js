@@ -4,31 +4,31 @@ export default class RequestService {
   }
 
   get(url) {
-    return this.__fetch(url, 'GET')
+    return this.__fetch(url, 'GET');
   }
 
   post(url, payload) {
-    return this.__fetch(url, 'POST', payload)
+    return this.__fetch(url, 'POST', payload);
   }
 
   put(url, payload) {
-    return this.__fetch(url, 'PUT', payload)
+    return this.__fetch(url, 'PUT', payload);
   }
 
   delete(url) {
-    return this.__fetch(url, 'DELETE')
+    return this.__fetch(url, 'DELETE');
   }
 
   __fetch(url, method, payload) {
-    let token = localStorage.getItem('token');
-    return fetch('http://localhost:8889'+url, {
-        method: method,
-        headers: {
-            "Content-type": "application/json",
-            "X-Token": token
-        },
-        body: JSON.stringify(payload)
-    }).then(response => {
+    const token = localStorage.getItem('token');
+    return fetch('http://localhost:8889' + url, {
+      method,
+      'headers': {
+        'Content-type': 'application/json',
+        'X-Token': token
+      },
+      'body': JSON.stringify(payload)
+    }).then((response) => {
       return response.json();
     });
   }

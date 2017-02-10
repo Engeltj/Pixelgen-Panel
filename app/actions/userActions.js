@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { request } from '../index'
+import { request } from '../index';
 
 import {
   GET_USERS,
@@ -8,37 +8,36 @@ import {
 } from '../enums';
 
 export const getUsersRequest = () => ({
-    type: GET_USERS
+  'type': GET_USERS
 });
 
 export const getUsersError = (error) => {
-    return {
-        type: GET_USERS_ERROR,
-        error
-    };
+  return {
+    'type': GET_USERS_ERROR,
+    error
+  };
 };
 
 export const getUsersSuccess = (payload) => {
-    return {
-        type: GET_USERS_SUCCESS,
-        payload
-    };
+  return {
+    'type': GET_USERS_SUCCESS,
+    payload
+  };
 };
 
-export const getUsers = function() {
-    return dispatch => {
-        dispatch(getUsersRequest());
+export const getUsers = function () {
+  return (dispatch) => {
+    dispatch(getUsersRequest());
 
-        request.get('/api/users')
-            .then(body => {
-                if (body.msg) {
-                    return dispatch(getUsersError(body.msg));
-                }
+    request.get('/api/users')
+            .then((body) => {
+              if (body.msg) {
+                return dispatch(getUsersError(body.msg));
+              }
 
-                dispatch(getUsersSuccess(body));
-            }).catch(err => {
-                dispatch(getUsersError(err.msg));
+              dispatch(getUsersSuccess(body));
+            }).catch((err) => {
+              dispatch(getUsersError(err.msg));
             });
-
-    };
+  };
 };
