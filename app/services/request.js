@@ -1,7 +1,6 @@
 export default class RequestService {
   constructor(store) {
     this.store = store;
-    
   }
 
   get(url) {
@@ -21,15 +20,16 @@ export default class RequestService {
   }
 
   __fetch(url, method, payload) {
+    let token = localStorage.getItem('token');
     return fetch('http://localhost:8889'+url, {
         method: method,
         headers: {
-            "Content-type": "application/json"  
+            "Content-type": "application/json",
+            "X-Token": token
         },
         body: JSON.stringify(payload)
     }).then(response => {
-      console.log(response);
-      return response;
+      return response.json();
     });
   }
 

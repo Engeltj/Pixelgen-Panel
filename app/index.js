@@ -15,7 +15,6 @@ import 'font-awesome/css/font-awesome.css';
 import 'animate.css';
 import '../public/styles/style.scss';
 
-import countReducer from './reducers/count';
 import authReducer from './reducers/auth';
 import RequestService from './services/request';
 
@@ -33,7 +32,6 @@ const logger = store => next => action => {
 const store = createStore(
     combineReducers({
         routing: routerReducer,
-        count: countReducer,
         auth: authReducer
     }),
     applyMiddleware(thunk/*, logger*/)

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Main from '../components/layouts/Main';
 import Blank from '../components/layouts/Blank';
@@ -10,7 +10,7 @@ import DiscountsView from '../views/Discounts';
 import { Route, Router, IndexRedirect, IndexRoute } from 'react-router';
 
 const UserIsAuthenticated = Component => {
-    class AuthenticatedComponent extends Component {
+    class AuthenticatedComponent extends React.Component {
         componentWillMount() {
             this.checkAuth.call(this);
         }

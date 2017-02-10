@@ -21,7 +21,9 @@ export const signInRequest = () => ({
 });
 
 export const signInSuccess = (payload) => {
-    localStorage.setItem('token', payload.token);
+    if (payload.token) {
+        localStorage.setItem('token', payload.token);
+    }
     return {
         type: SIGN_IN_SUCCESS,
         payload
@@ -35,13 +37,23 @@ export const signInError = (error) => {
     };
 };
 
+export const signInWithToken = () => dispatch => {
+    request.get('/api/users/me')
+        .then(user => {
+            if (user.msg === 'Expired token') {
+                return dispatch(signOut());
+            }
+            dispatch(signInSuccess({ user }));
+        });
+};
+
 export const signIn = function(email, password) {
     return dispatch => {
         dispatch(signInRequest());
 
-        request.post('/api/auth/signin', { email, password })
-        .then(response => {
-            return response.json()
+        request.post('/api/auth/signin', {
+            email,
+            password
         }).then(body => {
             if (body.msg) {
                 return dispatch(signInError(body.msg));
