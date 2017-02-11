@@ -22,7 +22,7 @@ class Login extends Component {
 
   constructor(props) {
     super(props);
-    _.bindAll(this, ['handleSubmit', 'onChange', 'checkAuth']);
+    _.bindAll(this, ['handleSubmit', 'handleChange', 'checkAuth']);
 
     this.state = {
       'email': '',
