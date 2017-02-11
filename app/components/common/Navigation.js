@@ -39,7 +39,7 @@ class Navigation extends Component {
     const { firstname, lastname, company } = this.props.user;
     return (
       <nav className="navbar-default navbar-static-side " role="navigation">
-        <ul className="nav metismenu" id="side-menu" ref={this.handleRef('menu')}>
+        <ul className="nav metismenu" id="side-menu" ref={ this.handleRef('menu') }>
           <li className="nav-header">
             <div className="dropdown profile-element text-center">
               <img src="img/logo_tile_sm.svg" width="70"/>
@@ -48,17 +48,17 @@ class Navigation extends Component {
                 <span className="clear"> <span className="block m-t-xs"> {company}
                 </span> <span className="text-muted text-xs block"><strong className="font-bold">{ `${firstname || ''} ${lastname || ''}` }&nbsp;</strong><b className="caret"/></span> </span> </a>
               <ul className="dropdown-menu m-t-xs">
-                <li><a onClick={this.props.onSignOut}> Logout</a></li>
+                <li><a onClick={ this.props.onSignOut }> Logout</a></li>
               </ul>
             </div>
             <div className="logo-element">
                             PGD
                         </div>
           </li>
-          <li className={this.activeRoute('/discounts')}>
+          <li className={ this.activeRoute('/discounts') }>
             <Link to="/discounts"><i className="fa fa-usd"/> <span className="nav-label">Discounts</span></Link>
           </li>
-          <li className={this.activeRoute('/users')}>
+          <li className={ this.activeRoute('/users') }>
             <Link to="/users"><i className="fa fa-th-large"/> <span className="nav-label">Manage Users</span></Link>
           </li>
         </ul>

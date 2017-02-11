@@ -73,14 +73,14 @@ class Login extends Component {
           </div>
           <h3>Welcome to Pixelgen</h3>
           <p>Log in.</p>
-          <form className="m-t" role="form" onSubmit={this.handleSubmit}>
+          <form className="m-t" role="form" onSubmit={ this.handleSubmit }>
             <div className="form-group">
-              <input onChange={this.handleChange} value={this.state.email} type="email" name="email" className="form-control" placeholder="Username" required=""/>
+              <input onChange={ this.handleChange } value={ this.state.email } type="email" name="email" className="form-control" placeholder="Username" required=""/>
             </div>
             <div className="form-group">
-              <input onChange={this.handleChange} value={this.state.password} type="password" name="password" className="form-control" placeholder="Password" required=""/>
+              <input onChange={ this.handleChange } value={ this.state.password } type="password" name="password" className="form-control" placeholder="Password" required=""/>
             </div>
-            <button type="submit" disabled={this.props.auth.signingIn} className="btn btn-primary block full-width m-b">Login</button>
+            <button type="submit" disabled={ this.props.auth.signingIn } className="btn btn-primary block full-width m-b">Login</button>
 
             { this.props.auth.signingIn && <p className="animated fadeIn">Signing in...</p> }
             { this.props.auth.hasError && <em className="animated fadeIn">{ this.props.auth.error }</em> }

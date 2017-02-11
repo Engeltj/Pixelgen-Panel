@@ -74,7 +74,9 @@
     "rules": {
       "eol-last": 0,
       "unicorn/filename-case": 0,
-      "react/jsx-curly-spacing": [2, "never", {"objectLiterals": "never"}],
+      "react/jsx-curly-spacing": [2, "always", {"spacing": {
+        "objectLiterals": "never"
+      }}],
       "unicorn/no-abusive-eslint-disable": 0,
       "arrow-parens": [
         "error",

@@ -44,9 +44,9 @@ class Main extends React.Component {
       <div id="wrapper">
         <DevTools/>
         <Progress/>
-        <Navigation location={this.props.location}/>
+        <Navigation location={ this.props.location }/>
 
-        <div id="page-wrapper" className={wrapperClass}>
+        <div id="page-wrapper" className={ wrapperClass }>
 
           <TopHeader/>
 

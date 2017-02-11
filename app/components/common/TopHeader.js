@@ -21,11 +21,11 @@ class TopHeader extends React.Component {
       <div className="row border-bottom">
         <nav className="navbar navbar-static-top white-bg" role="navigation" style={{ 'marginBottom': 0 }}>
           <div className="navbar-header">
-            <a className="navbar-minimalize minimalize-styl-2 btn btn-primary " onClick={this.handleToggleNavigation} href="#"><i className="fa fa-bars"/> </a>
+            <a className="navbar-minimalize minimalize-styl-2 btn btn-primary " onClick={ this.handleToggleNavigation } href="#"><i className="fa fa-bars"/> </a>
           </div>
           <ul className="nav navbar-top-links navbar-right">
             <li>
-              <a onClick={this.props.onSignOut}>
+              <a onClick={ this.props.onSignOut }>
                 <i className="fa fa-sign-out"/> Log out
               </a>
             </li>

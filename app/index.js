@@ -40,7 +40,7 @@ export const request = new RequestService(store); // eslint-disable-line import/
 const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render((
-  <Provider store={store}>
+  <Provider store={ store }>
     { routes(history) }
   </Provider>
 ), document.getElementById('root'));

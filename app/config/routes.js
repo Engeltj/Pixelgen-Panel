@@ -31,7 +31,7 @@ const userIsAuthenticated = (Component) => {
     }
 
     render() {
-      return <Component {...this.props}/>;
+      return <Component { ...this.props }/>;
     }
 
   }
@@ -48,15 +48,15 @@ const userIsAuthenticated = (Component) => {
 };
 
 const routes = (history) => (
-  <Router history={history}>
-    <Route path="/login" component={Blank}>
-      <IndexRoute component={LoginView}/>
+  <Router history={ history }>
+    <Route path="/login" component={ Blank }>
+      <IndexRoute component={ LoginView }/>
     </Route>
 
-    <Route path="/" component={userIsAuthenticated(Main)}>
+    <Route path="/" component={ userIsAuthenticated(Main) }>
       <IndexRedirect to="/discounts"/>
-      <Route path="discounts" component={DiscountsView}/>
-      <Route path="users" component={UsersView}/>
+      <Route path="discounts" component={ DiscountsView }/>
+      <Route path="users" component={ UsersView }/>
     </Route>
   </Router>
 );

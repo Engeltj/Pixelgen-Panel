@@ -20,7 +20,7 @@ class Header extends Component {
             {children.map((child) => {
               const isLast = i + 1 === numberOfChildren;
               return (
-                <li key={i++}>{ isLast ? <strong>{child}</strong> : child }</li>
+                <li key={ i++ }>{ isLast ? <strong>{child}</strong> : child }</li>
               );
             })}
           </ol>

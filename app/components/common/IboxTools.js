@@ -28,7 +28,7 @@ class IboxTools extends React.Component {
   render() {
     return (
       <div className="ibox-tools">
-        <a className="collapse-link" onClick={this.handleCollapsePanel}>
+        <a className="collapse-link" onClick={ this.handleCollapsePanel }>
           <i className="fa fa-chevron-up"/>
         </a>
         <a className="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -40,7 +40,7 @@ class IboxTools extends React.Component {
           <li><a href="#">Config option 2</a>
           </li>
         </ul>
-        <a className="close-link" onClick={this.handleClosePanel}>
+        <a className="close-link" onClick={ this.handleClosePanel }>
           <i className="fa fa-times"/>
         </a>
       </div>

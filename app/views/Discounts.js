@@ -61,7 +61,7 @@ class Discounts extends Component {
                         <table className="table table-striped table-hover">
                           <tbody>
                             {this.props.users.users.map((user) => {
-                              return <UserItem key={user._id} user={user}/>;
+                              return <UserItem key={ user._id } user={ user }/>;
                             })}
                           </tbody>
                         </table>
