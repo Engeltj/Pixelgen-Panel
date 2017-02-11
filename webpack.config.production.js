@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const devConfig = require('./webpack.config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const devConfig = require('./webpack.config');
 
 const config = {
   'devtool': 'source-map',

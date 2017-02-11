@@ -1,15 +1,15 @@
+import {
+  GET_USERS,
+  GET_USERS_SUCCESS,
+  GET_USERS_ERROR
+} from '../enums';
+
 const getInitialState = function () {
   return {
     'gettingUsers': false,
     'users': []
   };
 };
-
-import {
-  GET_USERS,
-  GET_USERS_SUCCESS,
-  GET_USERS_ERROR
-} from '../enums';
 
 export default function (state, action) {
   if (!state) {

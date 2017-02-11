@@ -1,17 +1,13 @@
+import {
+  GET_USERS,
+  GET_USER_DISCOUNTS
+} from '../enums';
+
 const getInitialState = function () {
   return {
     'gettingDiscounts': false
   };
 };
-
-import {
-  GET_USERS,
-  GET_USERS_SUCCESS,
-  GET_USERS_ERROR,
-  GET_USER_DISCOUNTS,
-  GET_USER_DISCOUNTS_SUCCESS,
-  GET_USER_DISCOUNTS_ERROR
-} from '../enums';
 
 export default function (state, action) {
   if (!state) {

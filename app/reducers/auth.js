@@ -1,3 +1,11 @@
+/* global localStorage */
+import {
+  SIGN_IN,
+  SIGN_IN_SUCCESS,
+  SIGN_IN_ERROR,
+  SIGN_OUT
+} from '../enums';
+
 const getInitialState = function () {
   const token = localStorage.getItem('token');
 
@@ -8,13 +16,6 @@ const getInitialState = function () {
     'isAuthenticated': Boolean(token)
   };
 };
-
-import {
-  SIGN_IN,
-  SIGN_IN_SUCCESS,
-  SIGN_IN_ERROR,
-  SIGN_OUT
-} from '../enums';
 
 export default function (state, action) {
   if (!state) {

@@ -1,14 +1,11 @@
-import React from 'react';
+/* global $ */
+import React, { PropTypes } from 'react';
 
 class Blank extends React.Component {
 
-  render() {
-    return (
-            <div>
-                {this.props.children}
-            </div>
-    );
-  }
+  static propTypes = {
+    'children': PropTypes.node
+  };
 
   componentDidMount() {
     $('body').addClass('gray-bg');
@@ -16,6 +13,14 @@ class Blank extends React.Component {
 
   componentWillUnmount() {
     $('body').removeClass('gray-bg');
+  }
+
+  render() {
+    return (
+      <div>
+        {this.props.children}
+      </div>
+    );
   }
 }
 

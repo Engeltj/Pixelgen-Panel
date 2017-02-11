@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { signOut } from '../../actions/authActions';
+/* global $ */
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Dropdown } from 'react-bootstrap';
-import { Link, Location } from 'react-router';
+import { Link } from 'react-router';
+import { signOut } from '../../actions/authActions';
 
 class Navigation extends Component {
 
@@ -10,9 +10,21 @@ class Navigation extends Component {
     'user': {}
   };
 
+  static propTypes = {
+    'location': PropTypes.object,
+    'user': PropTypes.object,
+    'onSignOut': PropTypes.func.isRequired
+  };
+
   componentDidMount() {
-    const { menu } = this.refs;
+    const { menu } = this;
     $(menu).metisMenu();
+  }
+
+  handleRef(name) {
+    return (ref) => {
+      this[name] = ref;
+    };
   }
 
   activeRoute(routeName) {
@@ -26,38 +38,37 @@ class Navigation extends Component {
   render() {
     const { firstname, lastname, company } = this.props.user;
     return (
-            <nav className="navbar-default navbar-static-side " role="navigation">
-                <ul className="nav metismenu" id="side-menu" ref="menu">
-                    <li className="nav-header">
-                        <div className="dropdown profile-element text-center">
-                            <img src="img/logo_tile_sm.svg" width="70" />
-                             <span>
-                            </span>
-                            <a data-toggle="dropdown" className="dropdown-toggle" href="#">
-                        <span className="clear"> <span className="block m-t-xs"> {company}
-                            </span> <span className="text-muted text-xs block"><strong className="font-bold">{ `${firstname || ''} ${lastname || ''}` }&nbsp;</strong><b className="caret"></b></span> </span> </a>
-                            <ul className="dropdown-menu m-t-xs">
-                                <li><a onClick={ this.props.signOut }> Logout</a></li>
-                            </ul>
-                        </div>
-                        <div className="logo-element">
+      <nav className="navbar-default navbar-static-side " role="navigation">
+        <ul className="nav metismenu" id="side-menu" ref={this.handleRef('menu')}>
+          <li className="nav-header">
+            <div className="dropdown profile-element text-center">
+              <img src="img/logo_tile_sm.svg" width="70"/>
+              <span/>
+              <a data-toggle="dropdown" className="dropdown-toggle" href="#">
+                <span className="clear"> <span className="block m-t-xs"> {company}
+                </span> <span className="text-muted text-xs block"><strong className="font-bold">{ `${firstname || ''} ${lastname || ''}` }&nbsp;</strong><b className="caret"/></span> </span> </a>
+              <ul className="dropdown-menu m-t-xs">
+                <li><a onClick={this.props.onSignOut}> Logout</a></li>
+              </ul>
+            </div>
+            <div className="logo-element">
                             PGD
                         </div>
-                    </li>
-                    <li className={this.activeRoute('/discounts')}>
-                        <Link to="/discounts"><i className="fa fa-usd"></i> <span className="nav-label">Discounts</span></Link>
-                    </li>
-                    <li className={this.activeRoute('/users')}>
-                        <Link to="/users"><i className="fa fa-th-large"></i> <span className="nav-label">Manage Users</span></Link>
-                    </li>
-                </ul>
-            </nav>
+          </li>
+          <li className={this.activeRoute('/discounts')}>
+            <Link to="/discounts"><i className="fa fa-usd"/> <span className="nav-label">Discounts</span></Link>
+          </li>
+          <li className={this.activeRoute('/users')}>
+            <Link to="/users"><i className="fa fa-th-large"/> <span className="nav-label">Manage Users</span></Link>
+          </li>
+        </ul>
+      </nav>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  signOut() {
+  onSignOut() {
     dispatch(signOut());
   }
 });

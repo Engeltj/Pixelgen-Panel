@@ -1,12 +1,13 @@
-import React from 'react';
+/* global $, window */
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Progress from '../common/Progress';
 import Navigation from '../common/Navigation';
 import Footer from '../common/Footer';
 import TopHeader from '../common/TopHeader';
-import { correctHeight, detectBody } from './Helpers';
 import { signInWithToken } from '../../actions/authActions';
 import DevTools from '../developer/DevTools';
+import { correctHeight, detectBody } from './Helpers';
 
 const mapStateToProps = (state) => {
   return {
@@ -23,6 +24,14 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Main extends React.Component {
 
+  static propTypes = {
+    'isAuthenticated': PropTypes.bool.isRequired,
+    'signInWithToken': PropTypes.func.isRequired,
+    'user': PropTypes.object,
+    'location': PropTypes.object,
+    'children': PropTypes.node
+  };
+
   componentWillMount() {
     if (this.props.isAuthenticated && !this.props.user) {
       this.props.signInWithToken();
@@ -32,22 +41,22 @@ class Main extends React.Component {
   render() {
     const wrapperClass = 'gray-bg ' + this.props.location.pathname;
     return (
-            <div id="wrapper">
-                <DevTools />
-                <Progress />
-                <Navigation location={this.props.location}/>
+      <div id="wrapper">
+        <DevTools/>
+        <Progress/>
+        <Navigation location={this.props.location}/>
 
-                <div id="page-wrapper" className={wrapperClass}>
+        <div id="page-wrapper" className={wrapperClass}>
 
-                    <TopHeader />
+          <TopHeader/>
 
-                    {this.props.children}
+          {this.props.children}
 
-                    <Footer />
+          <Footer/>
 
-                </div>
+        </div>
 
-            </div>
+      </div>
 
     );
   }

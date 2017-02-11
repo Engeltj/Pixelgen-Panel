@@ -1,10 +1,12 @@
+/* global document */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
-import routes from './config/routes';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import thunk from 'redux-thunk';
+import routes from './config/routes';
 
 import 'jquery';
 import 'metismenu';
@@ -21,35 +23,24 @@ import discountsReducer from './reducers/discounts';
 
 import RequestService from './services/request';
 
-import thunk from 'redux-thunk';
-
 import DevTools from './components/developer/DevTools';
 
-const logger = (store) => (next) => (action) => {
-  console.group(action.type);
-  console.info('Dispatching: ', action);
-  const result = next(action);
-  console.log('Next state', store.getState());
-  console.groupEnd(action.type);
-  return result;
-};
-
 const store = createStore(
-    combineReducers({
-      'routing': routerReducer,
-      'auth': authReducer,
-      'users': usersReducer,
-      'discounts': discountsReducer
-    }),
-    compose(applyMiddleware(thunk/* , logger */), DevTools.instrument())
+  combineReducers({
+    'routing': routerReducer,
+    'auth': authReducer,
+    'users': usersReducer,
+    'discounts': discountsReducer
+  }),
+  compose(applyMiddleware(thunk), DevTools.instrument())
 );
 
-export const request = new RequestService(store);
+export const request = new RequestService(store); // eslint-disable-line import/prefer-default-export
 
 const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render((
-    <Provider store={ store }>
-        { routes(history) }
-    </Provider>
+  <Provider store={store}>
+    { routes(history) }
+  </Provider>
 ), document.getElementById('root'));

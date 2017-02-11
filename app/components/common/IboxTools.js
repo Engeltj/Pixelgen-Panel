@@ -1,8 +1,9 @@
+/* global $ */
 import React from 'react';
 
 class IboxTools extends React.Component {
 
-  collapsePanel(e) {
+  handleCollapsePanel(e) {
     e.preventDefault();
     const element = $(e.target);
     const ibox = element.closest('div.ibox');
@@ -17,7 +18,7 @@ class IboxTools extends React.Component {
     }, 50);
   }
 
-  closePanel(e) {
+  handleClosePanel(e) {
     e.preventDefault();
     const element = $(e.target);
     const content = element.closest('div.ibox');
@@ -26,23 +27,23 @@ class IboxTools extends React.Component {
 
   render() {
     return (
-            <div className="ibox-tools">
-                <a className="collapse-link" onClick={this.collapsePanel}>
-                    <i className="fa fa-chevron-up"></i>
-                </a>
-                <a className="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i className="fa fa-wrench"></i>
-                </a>
-                <ul className="dropdown-menu dropdown-user">
-                    <li><a href="#">Config option 1</a>
-                    </li>
-                    <li><a href="#">Config option 2</a>
-                    </li>
-                </ul>
-                <a className="close-link" onClick={this.closePanel}>
-                    <i className="fa fa-times"></i>
-                </a>
-            </div>
+      <div className="ibox-tools">
+        <a className="collapse-link" onClick={this.handleCollapsePanel}>
+          <i className="fa fa-chevron-up"/>
+        </a>
+        <a className="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i className="fa fa-wrench"/>
+        </a>
+        <ul className="dropdown-menu dropdown-user">
+          <li><a href="#">Config option 1</a>
+          </li>
+          <li><a href="#">Config option 2</a>
+          </li>
+        </ul>
+        <a className="close-link" onClick={this.handleClosePanel}>
+          <i className="fa fa-times"/>
+        </a>
+      </div>
     );
   }
 }

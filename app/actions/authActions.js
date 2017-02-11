@@ -1,5 +1,4 @@
-import fetch from 'isomorphic-fetch';
-import _ from 'lodash';
+/* global localStorage */
 import { request } from '../index';
 
 import {

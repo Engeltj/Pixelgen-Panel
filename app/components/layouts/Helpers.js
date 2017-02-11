@@ -1,4 +1,4 @@
-/* globals $ window */
+/* globals $ window document */
 
 export function correctHeight() {
   const pageWrapper = $('#page-wrapper');

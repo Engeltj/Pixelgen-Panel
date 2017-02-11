@@ -1,3 +1,6 @@
+/* global localStorage */
+import fetch from 'isomorphic-fetch';
+
 export default class RequestService {
   constructor(store) {
     this.store = store;
