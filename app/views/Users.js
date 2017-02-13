@@ -6,11 +6,11 @@ import Header from '../components/common/Header';
 class Users extends Component {
 
   render() {
+    const routes = [{path: '/users', name: 'Users'}];
+
     return (
       <div>
-        <Header title="Manage User Accounts">
-          <Link to="/users">Users</Link>
-        </Header>
+        <Header title="Manage User Accounts" routes={routes} />
         <div className="wrapper wrapper-content">
           <div className="row">
             <div className="col-lg-12">

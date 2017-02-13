@@ -21,11 +21,11 @@ class Orders extends Component {
   }
 
   render() {
+    const routes = [{path:'/orders', name:'Orders'}]
     return (
+      
       <div>
-        <Header title="Order History">
-          <Link to="/orders">Orders</Link>
-        </Header>
+        <Header title="Manage Discounts" routes={routes} />
       </div>
     );
   }
