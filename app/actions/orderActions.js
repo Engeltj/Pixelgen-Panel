@@ -7,16 +7,16 @@ import {
 } from '../enums';
 
 export const getOrdersRequest = () => ({
-  type: GET_ORDERS
+  'type': GET_ORDERS
 });
 
 export const getOrdersSuccess = (payload) => ({
-  type: GET_ORDERS_SUCCESS,
+  'type': GET_ORDERS_SUCCESS,
   payload
 });
 
 export const getOrdersError = (payload) => ({
-  type: GET_ORDERS_ERROR,
+  'type': GET_ORDERS_ERROR,
   payload
 });
 

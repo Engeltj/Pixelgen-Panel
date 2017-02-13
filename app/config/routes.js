@@ -56,9 +56,9 @@ const routes = (history) => (
 
     <Route path="/" component={ userIsAuthenticated(Main) }>
       <IndexRedirect to="/discounts"/>
-      <Route path="discounts" component={ DiscountsView } />
-      <Route path="users" component={ UsersView } />
-      <Route path="orders" component={ OrdersView } />
+      <Route path="discounts" component={ DiscountsView }/>
+      <Route path="users" component={ UsersView }/>
+      <Route path="orders" component={ OrdersView }/>
     </Route>
   </Router>
 );

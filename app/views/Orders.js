@@ -33,10 +33,10 @@ class Orders extends Component {
 }
 
 Orders.propTypes = {
-  orders: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string,
-  getOrders: PropTypes.func.isRequired
+  'orders': PropTypes.array.isRequired,
+  'loading': PropTypes.bool.isRequired,
+  'errorMessage': PropTypes.string,
+  'getOrders': PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Orders);

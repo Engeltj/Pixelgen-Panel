@@ -52,8 +52,8 @@ class Navigation extends Component {
               </ul>
             </div>
             <div className="logo-element">
-                            PGD
-                        </div>
+                PGD
+            </div>
           </li>
           <li className={ this.activeRoute('/orders') }>
             <Link to="/orders"><i className="fa fa-credit-card"/> <span className="nav-label">Orders</span></Link>

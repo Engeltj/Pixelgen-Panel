@@ -5,9 +5,9 @@ import {
 } from '../enums';
 
 const getInitialState = () => ({
-  loading: false,
-  errorMessage: '',
-  orders: []
+  'loading': false,
+  'errorMessage': '',
+  'orders': []
 });
 
 export default (state, { type, payload }) => {
@@ -19,7 +19,7 @@ export default (state, { type, payload }) => {
     case GET_ORDERS:
       return { ...state, ...{ 'loading': true, 'errorMessage': '' } };
     case GET_ORDERS_SUCCESS:
-      return { ...state, ...{ 'loading': false, 'errorMessage': '', orders: payload.orders } };
+      return { ...state, ...{ 'loading': false, 'errorMessage': '', 'orders': payload.orders } };
     case GET_ORDERS_ERROR:
       return { ...state, ...{ 'loading': false, 'errorMessage': payload.msg } };
     default:
