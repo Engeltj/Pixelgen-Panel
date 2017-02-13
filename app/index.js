@@ -20,6 +20,7 @@ import '../public/styles/style.scss';
 import authReducer from './reducers/auth';
 import usersReducer from './reducers/users';
 import discountsReducer from './reducers/discounts';
+import ordersReducer from './reducers/orders';
 
 import RequestService from './services/request';
 
@@ -30,7 +31,8 @@ const store = createStore(
     'routing': routerReducer,
     'auth': authReducer,
     'users': usersReducer,
-    'discounts': discountsReducer
+    'discounts': discountsReducer,
+    'orders': ordersReducer
   }),
   compose(applyMiddleware(thunk), DevTools.instrument())
 );

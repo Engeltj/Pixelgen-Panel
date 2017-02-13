@@ -8,6 +8,7 @@ import Blank from '../components/layouts/Blank';
 import LoginView from '../views/Login';
 import UsersView from '../views/Users';
 import DiscountsView from '../views/Discounts';
+import OrdersView from '../views/Orders';
 
 const userIsAuthenticated = (Component) => {
   class AuthenticatedComponent extends React.Component {
@@ -55,8 +56,9 @@ const routes = (history) => (
 
     <Route path="/" component={ userIsAuthenticated(Main) }>
       <IndexRedirect to="/discounts"/>
-      <Route path="discounts" component={ DiscountsView }/>
-      <Route path="users" component={ UsersView }/>
+      <Route path="discounts" component={ DiscountsView } />
+      <Route path="users" component={ UsersView } />
+      <Route path="orders" component={ OrdersView } />
     </Route>
   </Router>
 );

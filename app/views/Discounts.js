@@ -58,7 +58,7 @@ class Discounts extends Component {
                   <div className="clients-list">
                     <div className="full-height-scroll">
                       <div className="table-responsive">
-                        <table className="table table-striped table-hover">
+                        <table className="table table-striped table-hover" style={{ border: '1px solid #eee' }}>
                           <tbody>
                             {this.props.users.users.map((user) => {
                               return <UserItem key={ user._id } user={ user }/>;
