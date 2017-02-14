@@ -28,35 +28,34 @@ class Orders extends Component {
   //   this.state = {}
   //   this.state.loading = false;
   // }
-  
+
   componentWillMount() {
     this.props.getOrders();
   }
 
   render() {
-    const routes = [{path:'/orders', name:'Orders'}]
+    const routes = [{ 'path': '/orders', 'name': 'Orders' }];
     if (!this.props.orders.orders) {
       return (
 
         <div>
-          <Header title="Manage Orders" routes={routes} />
+          <Header title="Manage Orders" routes={ routes }/>
           <div className="wrapper wrapper-content">
             <div className="row">
               <div className="col-lg-12">
-                <Table title="Orders"  manageFunc={ this.props.getOrders } headers={[]}>
-                     {this.props.orders.map((order) => {
-                       return <OrderTableItem key={ order._id } data={ order } manageFunc={ this.props.getOrders }/>;
-                    })}
-                   
+                <Table title="Orders" manageFunc={ this.props.getOrders } headers={ [] }>
+                  {this.props.orders.map((order) => {
+                    return <OrderTableItem key={ order._id } data={ order } manageFunc={ this.props.getOrders }/>;
+                  })}
+
                 </Table>
               </div>
             </div>
           </div>
         </div>
       );
-    } else {
-      return (<div>hello</div>);
     }
+    return (<div>hello</div>);
   }
 
 }

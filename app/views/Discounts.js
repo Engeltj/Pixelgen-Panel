@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 
 import { getUsers } from '../actions/userActions';
 import { getDiscounts, saveDiscounts } from '../actions/discountActions';
@@ -38,6 +37,7 @@ class Discounts extends Component {
   static propTypes = {
     'getUsers': PropTypes.func.isRequired,
     'getDiscounts': PropTypes.func.isRequired,
+    'saveDiscounts': PropTypes.func.isRequired,
     'users': PropTypes.object,
     'discounts': PropTypes.object
   };
@@ -45,7 +45,7 @@ class Discounts extends Component {
   constructor(props) {
     super(props);
     _.bindAll(this, ['handleSave', 'handleChange']);
-    this.state = {}
+    this.state = {};
   }
 
   componentWillMount() {
@@ -59,7 +59,7 @@ class Discounts extends Component {
 
   }
 
-  handleSave(e) {
+  handleSave() {
     this.props.saveDiscounts(this.props.discounts.user, this.state);
   }
 
@@ -69,22 +69,22 @@ class Discounts extends Component {
   }
 
   render() {
-    const routes = [{path: '/discounts', name: 'Discounts'}];
-    
+    const routes = [{ 'path': '/discounts', 'name': 'Discounts' }];
+
     if (!this.props.discounts.discounts) {
       return (
 
         <div>
-          <Header title="Manage Discounts" routes={routes} />
+          <Header title="Manage Discounts" routes={ routes }/>
 
           <div className="wrapper wrapper-content">
             <div className="row">
               <div className="col-lg-12">
-                <Table title="Users" manageFunc={ this.props.getDiscounts } headers={[]}>
-                    
-                    {this.props.users.users.map((user) => {
-                       return <UserTableItem key={ user._id } user={ user } manageFunc={ this.props.getDiscounts }/>;
-                    })}
+                <Table title="Users" manageFunc={ this.props.getDiscounts } headers={ [] }>
+
+                  {this.props.users.users.map((user) => {
+                    return <UserTableItem key={ user._id } user={ user } manageFunc={ this.props.getDiscounts }/>;
+                  })}
                 </Table>
               </div>
             </div>
@@ -92,32 +92,32 @@ class Discounts extends Component {
         </div>
       );
     }
-    else {
-      routes.push({path:'/discounts/'+this.props.discounts.user._id, name: this.props.discounts.user.email})
-      return (
-        <div>
-          <Header title="Manage Discounts" routes={routes} />
-          <IBox title="">
-            <div>
-              <button type="button" className="btn btn-success pull-right" onClick={this.handleSave}><i className="fa fa-floppy-o" aria-hidden="true" />&nbsp;Save</button>
-            </div>
-            <br/>
-            <br/>
-          </IBox>
-          <Table className="col-md-6 col-md-offset-3" title="Users" manageFunc={ this.props.getDiscounts } headers={['Product', 'Price (USD)']}>
-              {this.props.discounts.discounts.map((product ,i) => {
-                    return (
-                      <tr key={i}>
-                        <td>{ product.name }</td>
-                        <td><input type="text" className="form-control" name={product._id} onChange={ this.handleChange } placeholder={product.cost}/></td>
-                        {/* <td className="client-status"><span className="label label-primary">Active</span></td> */}
-                      </tr>
-                    )
-              })}
-          </Table>
-        </div>
-      );
-    }
+
+    routes.push({ 'path': '/discounts/' + this.props.discounts.user._id, 'name': this.props.discounts.user.email });
+    return (
+      <div>
+        <Header title="Manage Discounts" routes={ routes }/>
+
+        <IBox title="">
+          <div>
+            <button type="button" className="btn btn-success pull-right" onClick={ this.handleSave }><i className="fa fa-floppy-o" aria-hidden="true"/>&nbsp;Save</button>
+          </div>
+          <br/>
+          <br/>
+        </IBox>
+        <Table title="Users" manageFunc={ this.props.getDiscounts } headers={ ['Product', 'Price (USD)'] }>
+          {this.props.discounts.discounts.map((product, i) => {
+            return (
+              <tr key={ i }>
+                <td>{ product.name }</td>
+                <td><input type="text" className="form-control" name={ product._id } onChange={ this.handleChange } placeholder={ product.cost }/></td>
+                {/* <td className="client-status"><span className="label label-primary">Active</span></td> */}
+              </tr>
+            );
+          })}
+        </Table>
+      </div>
+    );
   }
 }
 

@@ -33,7 +33,7 @@ export const getDiscounts = function (user) {
   return (dispatch) => {
     dispatch(getDiscountsRequest(user));
 
-    request.get('/api/discounts/'+user._id)
+    request.get('/api/discounts/' + user._id)
       .then((body) => {
         if (body.msg) {
           return dispatch(getDiscountsError(body.msg));
@@ -44,8 +44,6 @@ export const getDiscounts = function (user) {
       });
   };
 };
-
-
 
 export const saveDiscountsRequest = (payload) => ({
   'type': SAVE_USER_DISCOUNTS,
@@ -66,12 +64,11 @@ export const saveDiscountsSuccess = (payload) => {
   };
 };
 
-
 export const saveDiscounts = function (user, discounts) {
   return (dispatch) => {
     dispatch(getDiscountsRequest(discounts));
 
-    request.post('/api/discounts/'+user._id, discounts)
+    request.post('/api/discounts/' + user._id, discounts)
       .then((body) => {
         if (body.msg) {
           return dispatch(saveDiscountsError(body.msg));
@@ -79,6 +76,6 @@ export const saveDiscounts = function (user, discounts) {
         dispatch(saveDiscountsSuccess(body));
       }).catch((err) => {
         dispatch(saveDiscountsError(err.msg));
-      }); 
-  }
-}
+      });
+  };
+};

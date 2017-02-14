@@ -13,7 +13,7 @@ const getInitialState = function () {
     'gettingDiscounts': false,
     'savingDiscounts': false,
     'discounts': null,
-    'user': ""
+    'user': ''
   };
 };
 
@@ -34,7 +34,7 @@ export default function (state, action) {
     case SAVE_USER_DISCOUNTS:
       return { ...state, ...{ 'savingDiscounts': true } };
     case SAVE_USER_DISCOUNTS_SUCCESS:
-      return { ...state, ...{ 'savingDiscounts': false, 'discounts': null, 'user': "" } };
+      return { ...state, ...{ 'savingDiscounts': false, 'discounts': null, 'user': '' } };
     case SAVE_USER_DISCOUNTS_ERROR:
       return { ...state, ...{ 'savingDiscounts': false } };
     default:

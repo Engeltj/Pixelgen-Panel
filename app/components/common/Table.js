@@ -28,9 +28,9 @@ class Table extends Component {
                 <table className="table table-striped table-hover" style={{ 'border': '1px solid #eee' }}>
                   <thead>
                     <tr>
-                    {_.map(this.props.headers, (header, i) => {
-                      return <th key={i}>{header}</th>;
-                    })}
+                      {_.map(this.props.headers, (header, i) => {
+                        return <th key={ i }>{header}</th>;
+                      })}
                     </tr>
                   </thead>
                   <tbody>
