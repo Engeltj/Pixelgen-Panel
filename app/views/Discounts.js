@@ -7,7 +7,7 @@ import { getUsers } from '../actions/userActions';
 import { getDiscounts, saveDiscounts } from '../actions/discountActions';
 import Header from '../components/common/Header';
 // import IBox from '../components/common/IBox';
-import UserTable from '../components/users/UserTable';
+import Table from '../components/common/Table';
 import UserTableItem from '../components/users/UserTableItem';
 import IBox from '../components/common/IBox';
 // import { getDiscounts } from '../actions/discountActions';
@@ -80,12 +80,12 @@ class Discounts extends Component {
           <div className="wrapper wrapper-content">
             <div className="row">
               <div className="col-lg-12">
-                <UserTable title="Users" users={ this.props.users } manageFunc={ this.props.getDiscounts } headers={[]}>
+                <Table title="Users" manageFunc={ this.props.getDiscounts } headers={[]}>
                     
                     {this.props.users.users.map((user) => {
                        return <UserTableItem key={ user._id } user={ user } manageFunc={ this.props.getDiscounts }/>;
                     })}
-                </UserTable>
+                </Table>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@ class Discounts extends Component {
             <br/>
             <br/>
           </IBox>
-          <UserTable className="col-md-6 col-md-offset-3" title="Users" users={ this.props.users } manageFunc={ this.props.getDiscounts } headers={['Product', 'Price (USD)']}>
+          <Table className="col-md-6 col-md-offset-3" title="Users" manageFunc={ this.props.getDiscounts } headers={['Product', 'Price (USD)']}>
               {this.props.discounts.discounts.map((product ,i) => {
                     return (
                       <tr key={i}>
@@ -114,7 +114,7 @@ class Discounts extends Component {
                       </tr>
                     )
               })}
-          </UserTable>
+          </Table>
         </div>
       );
     }

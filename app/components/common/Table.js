@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
 import IBox from '../common/IBox';
-import UserTableItem from './UserTableItem';
 
-class UserTable extends Component {
+class Table extends Component {
   render() {
     const i = 0;
     let { children } = this.props;
@@ -46,37 +45,17 @@ class UserTable extends Component {
               </div>
             </div>
           </div>
-
-          {this.props.users.gettingUsers && <p>Loading...</p>}
-
         </IBox>
-
       </div>
-
-      /* <div className="row wrapper border-bottom white-bg page-heading">
-        <div className="col-lg-10">
-          <h2>{ this.props.title }</h2>
-          <ol className="breadcrumb">
-            {children.map((child) => {
-              const isLast = i + 1 === numberOfChildren;
-              return (
-                <li key={ i++ }>{ isLast ? <strong>{child}</strong> : child }</li>
-              );
-            })}
-          </ol>
-        </div>
-        <div className="col-lg-2"/>
-      </div> */
     );
   }
 }
 
-UserTable.propTypes = {
+Table.propTypes = {
   'title': PropTypes.string.isRequired,
-  'users': PropTypes.object.isRequired,
   'headers': PropTypes.array.isRequired,
   'manageFunc': PropTypes.func.isRequired,
   'children': PropTypes.array
 };
 
-export default UserTable;
+export default Table;
