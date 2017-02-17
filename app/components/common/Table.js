@@ -54,7 +54,6 @@ class Table extends Component {
 Table.propTypes = {
   'title': PropTypes.string.isRequired,
   'headers': PropTypes.array.isRequired,
-  'manageFunc': PropTypes.func.isRequired,
   'children': PropTypes.array
 };
 

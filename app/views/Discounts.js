@@ -75,15 +75,15 @@ class Discounts extends Component {
       return (
 
         <div>
-          <Header title="Manage Discounts" routes={ routes }/>
+          <Header title="Manage Discounts" routes={routes} />
 
           <div className="wrapper wrapper-content">
             <div className="row">
               <div className="col-lg-12">
-                <Table title="Users" manageFunc={ this.props.getDiscounts } headers={ [] }>
+                <Table title="Users" headers={[]}>
 
                   {this.props.users.users.map((user) => {
-                    return <UserTableItem key={ user._id } user={ user } manageFunc={ this.props.getDiscounts }/>;
+                    return <UserTableItem key={user._id} user={user} manageFunc={this.props.getDiscounts} />;
                   })}
                 </Table>
               </div>
@@ -91,33 +91,33 @@ class Discounts extends Component {
           </div>
         </div>
       );
+    } else {
+      routes.push({ 'path': '/discounts/' + this.props.discounts.user._id, 'name': this.props.discounts.user.email });
+      return (
+        <div>
+          <Header title="Manage Discounts" routes={routes} />
+
+          <IBox title="">
+            <div>
+              <button type="button" className="btn btn-success pull-right" onClick={this.handleSave}><i className="fa fa-floppy-o" aria-hidden="true" />&nbsp;Save</button>
+            </div>
+            <br />
+            <br />
+          </IBox>
+          <Table title="Users" manageFunc={this.props.getDiscounts} headers={['Product', 'Price (USD)']}>
+            {this.props.discounts.discounts.map((product, i) => {
+              return (
+                <tr key={i}>
+                  <td>{product.name}</td>
+                  <td><input type="text" className="form-control" name={product._id} onChange={this.handleChange} placeholder={product.cost} /></td>
+                  {/* <td className="client-status"><span className="label label-primary">Active</span></td> */}
+                </tr>
+              );
+            })}
+          </Table>
+        </div>
+      );
     }
-
-    routes.push({ 'path': '/discounts/' + this.props.discounts.user._id, 'name': this.props.discounts.user.email });
-    return (
-      <div>
-        <Header title="Manage Discounts" routes={ routes }/>
-
-        <IBox title="">
-          <div>
-            <button type="button" className="btn btn-success pull-right" onClick={ this.handleSave }><i className="fa fa-floppy-o" aria-hidden="true"/>&nbsp;Save</button>
-          </div>
-          <br/>
-          <br/>
-        </IBox>
-        <Table title="Users" manageFunc={ this.props.getDiscounts } headers={ ['Product', 'Price (USD)'] }>
-          {this.props.discounts.discounts.map((product, i) => {
-            return (
-              <tr key={ i }>
-                <td>{ product.name }</td>
-                <td><input type="text" className="form-control" name={ product._id } onChange={ this.handleChange } placeholder={ product.cost }/></td>
-                {/* <td className="client-status"><span className="label label-primary">Active</span></td> */}
-              </tr>
-            );
-          })}
-        </Table>
-      </div>
-    );
   }
 }
 
