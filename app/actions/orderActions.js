@@ -6,7 +6,8 @@ import {
   GET_ORDERS_SUCCESS,
   GET_ORDER_DETAIL,
   GET_ORDER_DETAIL_ERROR,
-  GET_ORDER_DETAIL_SUCCESS
+  GET_ORDER_DETAIL_SUCCESS,
+  CLEAR_ORDER_DETAIL
 } from '../enums';
 
 export const getOrdersRequest = () => ({
@@ -37,13 +38,16 @@ export const getOrderDetailError = (payload) => ({
   payload
 });
 
-
 export const getOrderDetail = function (order) {
   return (dispatch) => {
     dispatch(getOrderDetailRequest());
     dispatch(getOrderDetailSuccess(order));
   };
 };
+
+export const clearOrderDetail = () => ({
+  'type': CLEAR_ORDER_DETAIL
+});
 
 export const getOrders = () => {
   return (dispatch) => {

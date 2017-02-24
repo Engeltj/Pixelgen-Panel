@@ -4,7 +4,8 @@ import {
   GET_ORDERS_SUCCESS,
   GET_ORDER_DETAIL,
   GET_ORDER_DETAIL_ERROR,
-  GET_ORDER_DETAIL_SUCCESS
+  GET_ORDER_DETAIL_SUCCESS,
+  CLEAR_ORDER_DETAIL
 } from '../enums';
 
 const getInitialState = () => ({
@@ -32,6 +33,8 @@ export default (state, { type, payload }) => {
       return { ...state, ...{ 'loading': true, 'errorMessage': '', 'order': payload } };
     case GET_ORDER_DETAIL_ERROR:
       return { ...state, ...{ 'loading': true, 'errorMessage': 'Failed to obtain order detail' } };
+    case CLEAR_ORDER_DETAIL:
+      return { ...state, ...{ 'order': undefined } };
     default:
       return state;
   }
