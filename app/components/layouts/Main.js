@@ -1,40 +1,32 @@
 /* global $, window */
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
+import { inject, observer } from 'mobx-react';
 import Progress from '../common/Progress';
 import Navigation from '../common/Navigation';
 import Footer from '../common/Footer';
 import TopHeader from '../common/TopHeader';
-import { signInWithToken } from '../../actions/authActions';
-import DevTools from '../developer/DevTools';
 import { correctHeight, detectBody } from './Helpers';
 
-const mapStateToProps = (state) => {
-  return {
-    'user': state.auth.user,
-    'isAuthenticated': state.auth.isAuthenticated
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     'user': state.auth.user,
+//     'isAuthenticated': state.auth.isAuthenticated
+//   };
+// };
 
-const mapDispatchToProps = (dispatch) => ({
-  signInWithToken() {
-    dispatch(signInWithToken());
-  }
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   signInWithToken() {
+//     dispatch(signInWithToken());
+//   }
+// });
 
+@inject('auth')
+@observer
 class Main extends React.Component {
 
-  static propTypes = {
-    'isAuthenticated': PropTypes.bool.isRequired,
-    'signInWithToken': PropTypes.func.isRequired,
-    'user': PropTypes.object,
-    'location': PropTypes.object,
-    'children': PropTypes.node
-  };
-
   componentWillMount() {
-    if (this.props.isAuthenticated && !this.props.user) {
-      this.props.signInWithToken();
+    if (this.props.auth.isAuthenticated && !this.props.auth.user) {
+      this.props.auth.signInWithToken();
     }
   }
 
@@ -42,7 +34,6 @@ class Main extends React.Component {
     const wrapperClass = 'gray-bg ' + this.props.location.pathname;
     return (
       <div id="wrapper">
-        <DevTools/>
         <Progress/>
         <Navigation location={ this.props.location }/>
 
@@ -77,4 +68,4 @@ class Main extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;

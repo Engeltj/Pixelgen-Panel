@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { Route, Router, IndexRedirect, IndexRoute } from 'react-router';
 
 import Main from '../components/layouts/Main';
@@ -27,7 +27,8 @@ const userIsAuthenticated = (Component) => {
 
     checkAuth() {
       if (!this.props.isAuthenticated) {
-        this.context.router.replace('/login');
+        console.log('Is replacing... login');
+        // this.context.router.replace('/login');
       }
     }
 
@@ -41,11 +42,11 @@ const userIsAuthenticated = (Component) => {
     'router': PropTypes.object.isRequired
   };
 
-  const mapStateToProps = (state) => ({
-    'isAuthenticated': state.auth.isAuthenticated
-  });
+  // const mapStateToProps = (state) => ({
+  //   'isAuthenticated': state.auth.isAuthenticated
+  // });
 
-  return connect(mapStateToProps)(AuthenticatedComponent);
+  return AuthenticatedComponent;
 };
 
 const routes = (history) => (

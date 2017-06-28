@@ -1,9 +1,10 @@
 /* global $ */
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router';
-import { signOut } from '../../actions/authActions';
 
+@inject(['auth'])
+@observer
 class Navigation extends Component {
 
   static defaultProps = {
@@ -12,8 +13,7 @@ class Navigation extends Component {
 
   static propTypes = {
     'location': PropTypes.object,
-    'user': PropTypes.object,
-    'onSignOut': PropTypes.func.isRequired
+    'user': PropTypes.object
   };
 
   componentDidMount() {
@@ -36,7 +36,7 @@ class Navigation extends Component {
   }
 
   render() {
-    const { firstname, lastname, company } = this.props.user;
+    const { firstname, lastname, company } = this.props.auth.user;
     return (
       <nav className="navbar-default navbar-static-side " role="navigation">
         <ul className="nav metismenu" id="side-menu" ref={ this.handleRef('menu') }>
@@ -67,15 +67,4 @@ class Navigation extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  onSignOut() {
-    dispatch(signOut());
-  }
-});
-
-const mapStateToProps = (state) => ({
-  'isAuthenticated': state.auth.isAuthenticated,
-  'user': state.auth.user || undefined
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default Navigation;

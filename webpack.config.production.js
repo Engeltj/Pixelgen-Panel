@@ -6,7 +6,7 @@ const devConfig = require('./webpack.config');
 const config = {
   'devtool': 'source-map',
   'entry': {
-    'app': './app/index',
+    'app': ['babel-polyfill', './app/index'],
     'vendor': devConfig.entry.vendor
   },
   'resolve': { 'alias': {} },

@@ -2,10 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import { Provider } from 'react-redux';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
-import thunk from 'redux-thunk';
+import { Provider } from 'mobx-react';
 import routes from './config/routes';
 
 import 'jquery';
@@ -15,32 +12,22 @@ import 'font-awesome/css/font-awesome.css';
 import 'animate.css';
 import '../public/styles/style.scss';
 
-import authReducer from './reducers/auth';
-import usersReducer from './reducers/users';
-import discountsReducer from './reducers/discounts';
-import ordersReducer from './reducers/orders';
-
 import RequestService from './services/request';
 
-import DevTools from './components/developer/DevTools';
+import AuthorizationStore from './stores/auth';
+import DiscountsStore from './stores/discounts';
+import OrdersStore from './stores/orders';
+import UsersStore from './stores/users';
 
-const store = createStore(
-  combineReducers({
-    'routing': routerReducer,
-    'auth': authReducer,
-    'users': usersReducer,
-    'discounts': discountsReducer,
-    'orders': ordersReducer
-  }),
-  compose(applyMiddleware(thunk), DevTools.instrument())
-);
-
-export const request = new RequestService(store); // eslint-disable-line import/prefer-default-export
-
-const history = syncHistoryWithStore(browserHistory, store);
+export const request = new RequestService(); // eslint-disable-line import/prefer-default-export
 
 ReactDOM.render((
-  <Provider store={ store }>
-    { routes(history) }
+  <Provider
+    auth={ new AuthorizationStore() }
+    discounts={ new DiscountsStore() }
+    orders={ new OrdersStore() }
+    users={ new UsersStore() }
+  >
+    { routes(browserHistory) }
   </Provider>
 ), document.getElementById('root'));
