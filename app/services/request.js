@@ -2,10 +2,6 @@
 import fetch from 'isomorphic-fetch';
 
 export default class RequestService {
-  constructor(store) {
-    this.store = store;
-  }
-
   get(url) {
     return this.__fetch(url, 'GET');
   }

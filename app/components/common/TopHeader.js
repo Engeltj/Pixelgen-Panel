@@ -1,14 +1,11 @@
 /* global $ */
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
+import { inject, observer } from 'mobx-react';
 import { smoothlyMenu } from '../layouts/Helpers';
-import { signOut as authSignOut } from '../../actions/authActions';
 
+@inject('auth')
+@observer
 class TopHeader extends React.Component {
-
-  static propTypes = {
-    'onSignOut': PropTypes.func.isRequired
-  };
 
   handleToggleNavigation(e) {
     e.preventDefault();
@@ -25,7 +22,7 @@ class TopHeader extends React.Component {
           </div>
           <ul className="nav navbar-top-links navbar-right">
             <li className="pull-right logout-btn">
-              <a onClick={ this.props.onSignOut }>
+              <a onClick={ this.props.auth.signOut }>
                 <i style={{color: 'white'}} className="fa fa-sign-out"/> <span style={{width: '75px', color: 'white'}}>LOGOUT</span>
               </a>
             </li>
@@ -36,14 +33,4 @@ class TopHeader extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  onSignOut() {
-    dispatch(authSignOut());
-  }
-});
-
-const mapStateToProps = (state) => ({
-  'isAuthenticated': state.auth.isAuthenticated
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TopHeader);
+export default TopHeader;

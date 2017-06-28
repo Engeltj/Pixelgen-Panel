@@ -1,40 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
-import { connect } from 'react-redux';
 
-import { getUsers } from '../actions/userActions';
-import { getDiscounts, saveDiscounts } from '../actions/discountActions';
 import Header from '../components/common/Header';
-// import IBox from '../components/common/IBox';
 import Table from '../components/common/Table';
 import UserTableItem from '../components/users/UserTableItem';
 import IBox from '../components/common/IBox';
-// import { getDiscounts } from '../actions/discountActions';
+import { inject, observer } from 'mobx-react';
 
-const mapStateToProps = function (state) {
-  return {
-    'users': state.users,
-    'discounts': state.discounts
-  };
-};
-
-const mapDispatchToProps = function (dispatch) {
-  return {
-    getUsers() {
-      dispatch(getUsers());
-    },
-    getDiscounts(user) {
-      dispatch(getDiscounts(user));
-    },
-    saveDiscounts(user, discounts) {
-      dispatch(saveDiscounts(user, discounts));
-    },
-    back() {
-      dispatch(back());
-    }
-  };
-};
-
+@inject(['discounts', 'users'])
+@observer
 class Discounts extends Component {
 
   static propTypes = {
@@ -52,7 +26,7 @@ class Discounts extends Component {
   }
 
   componentWillMount() {
-    this.props.getUsers();
+    this.props.users.getUsers();
   }
 
   componentWillUnmount() {
@@ -63,7 +37,7 @@ class Discounts extends Component {
   }
 
   handleSave() {
-    this.props.saveDiscounts(this.props.discounts.user, this.state);
+    this.props.discounts.saveDiscounts(this.props.discounts.user, this.state);
   }
 
   handleChange(e) {
@@ -92,7 +66,7 @@ class Discounts extends Component {
                     </span>
                   </div>
                   {this.props.users.users.map((user) => {
-                    return <UserTableItem key={ user._id } user={ user } manageFunc={ this.props.getDiscounts }/>;
+                    return <UserTableItem key={ user._id } user={ user } manageFunc={ this.props.discounts.getDiscounts }/>;
                   })}
                 </Table>
               </div>
@@ -106,7 +80,7 @@ class Discounts extends Component {
       <div>
         <Header title="Manage Discounts" routes={ routes }/>
 
-        <Table manageFunc={ this.props.getDiscounts } headers={ ['Product', 'Price (USD)'] }>
+        <Table manageFunc={ this.props.discounts.getDiscounts } headers={ ['Product', 'Price (USD)'] }>
           <button type="button" className="btn btn-success pull-right" onClick={ this.handleSave }><i className="fa fa-floppy-o" aria-hidden="true"/>&nbsp;Save</button>
           {this.props.discounts.discounts.map((product, i) => {
             return (
@@ -123,4 +97,4 @@ class Discounts extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Discounts);
+export default Discounts;

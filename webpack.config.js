@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config = {
   'entry': {
     'app': [
+      'babel-polyfill',
       'webpack-dev-server/client?http://localhost:8000',
       'webpack/hot/only-dev-server',
       './app/index'

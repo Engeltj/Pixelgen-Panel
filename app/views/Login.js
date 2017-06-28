@@ -1,28 +1,16 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+import { observer, inject } from 'mobx-react';
 import _ from 'lodash';
 
-import { signIn } from '../actions/authActions';
-
-const mapStateToProps = function (state) {
-  return {
-    'auth': state.auth
-  };
-};
-
-const mapDispatchToProps = function (dispatch) {
-  return {
-    signIn(email, password) {
-      dispatch(signIn(email, password));
-    }
-  };
-};
-
+@inject('auth')
+@observer
 class Login extends Component {
 
   constructor(props) {
     super(props);
     _.bindAll(this, ['handleSubmit', 'handleChange', 'checkAuth']);
+
+    console.log(props);
 
     this.state = {
       'email': '',
@@ -35,8 +23,7 @@ class Login extends Component {
   };
 
   static propTypes = {
-    'auth': PropTypes.object,
-    'signIn': PropTypes.func.isRequired
+    'auth': PropTypes.object
   };
 
   componentWillMount() {
@@ -56,7 +43,7 @@ class Login extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { email, password } = this.state;
-    this.props.signIn(email, password);
+    this.props.auth.signIn(email, password);
   }
 
   handleChange(e) {
@@ -91,4 +78,4 @@ class Login extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
