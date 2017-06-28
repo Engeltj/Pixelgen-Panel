@@ -24,9 +24,9 @@ class TopHeader extends React.Component {
             <a className="navbar-minimalize minimalize-styl-2 btn btn-primary " onClick={ this.handleToggleNavigation } href="#"><i className="fa fa-bars"/> </a>
           </div>
           <ul className="nav navbar-top-links navbar-right">
-            <li>
+            <li className="pull-right logout-btn">
               <a onClick={ this.props.onSignOut }>
-                <i className="fa fa-sign-out"/> Log out
+                <i style={{color: 'white'}} className="fa fa-sign-out"/> <span style={{width: '75px', color: 'white'}}>LOGOUT</span>
               </a>
             </li>
           </ul>

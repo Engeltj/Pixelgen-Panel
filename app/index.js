@@ -10,9 +10,7 @@ import routes from './config/routes';
 
 import 'jquery';
 import 'metismenu';
-import 'bootstrap';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.css';
 import 'animate.css';
 import '../public/styles/style.scss';

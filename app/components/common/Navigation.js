@@ -46,10 +46,7 @@ class Navigation extends Component {
               <span/>
               <a data-toggle="dropdown" className="dropdown-toggle" href="#">
                 <span className="clear"> <span className="block m-t-xs"> {company}
-                </span> <span className="text-muted text-xs block"><strong className="font-bold">{ `${firstname || ''} ${lastname || ''}` }&nbsp;</strong><b className="caret"/></span> </span> </a>
-              <ul className="dropdown-menu m-t-xs">
-                <li><a onClick={ this.props.onSignOut }> Logout</a></li>
-              </ul>
+                </span> <span className="text-muted text-xs block"><strong className="font-bold">{ `${firstname || ''} ${lastname || ''}` }&nbsp;</strong></span> </span> </a>
             </div>
             <div className="logo-element">
                 PGD

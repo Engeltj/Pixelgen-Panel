@@ -28,6 +28,9 @@ const mapDispatchToProps = function (dispatch) {
     },
     saveDiscounts(user, discounts) {
       dispatch(saveDiscounts(user, discounts));
+    },
+    back() {
+      dispatch(back());
     }
   };
 };
@@ -69,7 +72,7 @@ class Discounts extends Component {
   }
 
   render() {
-    const routes = [{ 'path': '/discounts', 'name': 'Discounts' }];
+    const routes = [{ 'path': '/discounts', 'name': 'Discounts', 'action': this.props.back }];
 
     if (!this.props.discounts.discounts) {
       return (
@@ -80,8 +83,14 @@ class Discounts extends Component {
           <div className="wrapper wrapper-content">
             <div className="row">
               <div className="col-lg-12">
+                
                 <Table title="Users" headers={ [] }>
-
+                  <div className="input-group">
+                    <input type="text" placeholder="Search" className="input form-control"/>
+                    <span className="input-group-btn">
+                      <button type="button" className="btn btn btn-default"> <i className="fa fa-search"/></button>
+                    </span>
+                  </div>
                   {this.props.users.users.map((user) => {
                     return <UserTableItem key={ user._id } user={ user } manageFunc={ this.props.getDiscounts }/>;
                   })}
@@ -97,14 +106,8 @@ class Discounts extends Component {
       <div>
         <Header title="Manage Discounts" routes={ routes }/>
 
-        <IBox title="">
-          <div>
-            <button type="button" className="btn btn-success pull-right" onClick={ this.handleSave }><i className="fa fa-floppy-o" aria-hidden="true"/>&nbsp;Save</button>
-          </div>
-          <br/>
-          <br/>
-        </IBox>
-        <Table title="Users" manageFunc={ this.props.getDiscounts } headers={ ['Product', 'Price (USD)'] }>
+        <Table manageFunc={ this.props.getDiscounts } headers={ ['Product', 'Price (USD)'] }>
+          <button type="button" className="btn btn-success pull-right" onClick={ this.handleSave }><i className="fa fa-floppy-o" aria-hidden="true"/>&nbsp;Save</button>
           {this.props.discounts.discounts.map((product, i) => {
             return (
               <tr key={ i }>

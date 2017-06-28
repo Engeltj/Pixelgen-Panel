@@ -16,12 +16,7 @@ class Table extends Component {
     return (
       <div className="" style={{ 'userSelect': 'none' }}>
         <IBox title={ this.props.title }>
-          <div className="input-group">
-            <input type="text" placeholder="Search" className="input form-control"/>
-            <span className="input-group-btn">
-              <button type="button" className="btn btn btn-primary"> <i className="fa fa-search"/>&nbsp;Filter</button>
-            </span>
-          </div>
+          
           <div className="clients-list">
             <div className="full-height-scroll">
               <div className="table-responsive">

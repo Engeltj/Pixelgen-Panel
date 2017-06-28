@@ -79,3 +79,7 @@ export const saveDiscounts = function (user, discounts) {
       });
   };
 };
+
+export const back = () => ({
+  'type': GET_USER_DISCOUNTS
+});
