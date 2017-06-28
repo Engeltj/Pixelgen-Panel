@@ -12,6 +12,10 @@ class Orders extends Component {
     this.props.orders.getOrders();
   }
 
+  componentWillReceiveProps(next) {
+    console.log(next.orders.loading);
+  }
+
   render() {
     if (!this.props.orders.order) {
       const routes = [{ 'path': '/orders', 'name': 'Orders' }];

@@ -36,7 +36,7 @@ class Navigation extends Component {
   }
 
   render() {
-    const { firstname, lastname, company } = this.props.auth.user;
+    const { firstname, lastname, company } = this.props.auth.user || {};
     return (
       <nav className="navbar-default navbar-static-side " role="navigation">
         <ul className="nav metismenu" id="side-menu" ref={ this.handleRef('menu') }>

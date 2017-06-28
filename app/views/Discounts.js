@@ -7,16 +7,13 @@ import UserTableItem from '../components/users/UserTableItem';
 import IBox from '../components/common/IBox';
 import { inject, observer } from 'mobx-react';
 
-@inject(['discounts', 'users'])
+@inject('discounts', 'users')
 @observer
 class Discounts extends Component {
 
   static propTypes = {
-    'getUsers': PropTypes.func.isRequired,
-    'getDiscounts': PropTypes.func.isRequired,
-    'saveDiscounts': PropTypes.func.isRequired,
-    'users': PropTypes.object,
-    'discounts': PropTypes.object
+    'users': PropTypes.object.isRequired,
+    'discounts': PropTypes.object.isRequired
   };
 
   constructor(props) {
@@ -80,7 +77,7 @@ class Discounts extends Component {
       <div>
         <Header title="Manage Discounts" routes={ routes }/>
 
-        <Table manageFunc={ this.props.discounts.getDiscounts } headers={ ['Product', 'Price (USD)'] }>
+        <Table title="" manageFunc={ this.props.discounts.getDiscounts } headers={ ['Product', 'Price (USD)'] }>
           <button type="button" className="btn btn-success pull-right" onClick={ this.handleSave }><i className="fa fa-floppy-o" aria-hidden="true"/>&nbsp;Save</button>
           {this.props.discounts.discounts.map((product, i) => {
             return (
