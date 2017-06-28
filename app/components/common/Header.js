@@ -19,7 +19,7 @@ class Header extends Component {
           <h2>{ this.props.title }</h2>
           <ol className="breadcrumb">
             {this.props.routes.map((child, i) => {
-              const _child = <Link key={ i } to={ child.path }>{child.name}</Link>;
+              const _child = <Link key={ i } to={ child.path } onClick={ child.action }>{child.name}</Link>;
               const isLast = i + 1 === numberOfChildren;
               return (
                 <li key={ i++ }>{ isLast ? <strong>{_child}</strong> : _child }</li>

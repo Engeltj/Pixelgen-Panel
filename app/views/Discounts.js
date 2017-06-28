@@ -80,7 +80,7 @@ class Discounts extends Component {
           <div className="wrapper wrapper-content">
             <div className="row">
               <div className="col-lg-12">
-                <Table title="Users" manageFunc={ this.props.getDiscounts } headers={ [] }>
+                <Table title="Users" headers={ [] }>
 
                   {this.props.users.users.map((user) => {
                     return <UserTableItem key={ user._id } user={ user } manageFunc={ this.props.getDiscounts }/>;
@@ -92,7 +92,6 @@ class Discounts extends Component {
         </div>
       );
     }
-
     routes.push({ 'path': '/discounts/' + this.props.discounts.user._id, 'name': this.props.discounts.user.email });
     return (
       <div>
@@ -109,7 +108,7 @@ class Discounts extends Component {
           {this.props.discounts.discounts.map((product, i) => {
             return (
               <tr key={ i }>
-                <td>{ product.name }</td>
+                <td>{product.name}</td>
                 <td><input type="text" className="form-control" name={ product._id } onChange={ this.handleChange } placeholder={ product.cost }/></td>
                 {/* <td className="client-status"><span className="label label-primary">Active</span></td> */}
               </tr>
