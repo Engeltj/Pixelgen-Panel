@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-// import { connect } from 'react-redux';
 import { Route, Router, IndexRedirect, IndexRoute } from 'react-router';
+import { inject, observer } from 'mobx-react';
 
 import Main from '../components/layouts/Main';
 import Blank from '../components/layouts/Blank';
@@ -10,11 +10,15 @@ import UsersView from '../views/Users';
 import DiscountsView from '../views/Discounts';
 import OrdersView from '../views/Orders';
 
+
 const userIsAuthenticated = (Component) => {
+  @inject('auth', 'routing')
+  @observer
   class AuthenticatedComponent extends React.Component {
 
     static propTypes = {
-      'isAuthenticated': PropTypes.bool.isRequired
+      'auth': PropTypes.object.isRequired,
+      'routing': PropTypes.object.isRequired
     };
 
     componentWillMount() {
@@ -26,25 +30,18 @@ const userIsAuthenticated = (Component) => {
     }
 
     checkAuth() {
-      if (!this.props.isAuthenticated) {
-        console.log('Is replacing... login');
-        // this.context.router.replace('/login');
+      console.log(this.props.auth.isAuthenticated);
+      if (!this.props.auth.isAuthenticated) {
+        this.props.routing.push('/login');
       }
     }
 
     render() {
+      console.log(this.props.auth.isAuthenticated);
       return <Component { ...this.props }/>;
     }
 
   }
-
-  AuthenticatedComponent.contextTypes = {
-    'router': PropTypes.object.isRequired
-  };
-
-  // const mapStateToProps = (state) => ({
-  //   'isAuthenticated': state.auth.isAuthenticated
-  // });
 
   return AuthenticatedComponent;
 };

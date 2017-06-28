@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import { Provider } from 'mobx-react';
+import { RouterStore, syncHistoryWithStore} from 'mobx-react-router';
 import routes from './config/routes';
 
 import 'jquery';
@@ -20,6 +21,8 @@ import OrdersStore from './stores/orders';
 import UsersStore from './stores/users';
 
 export const request = new RequestService(); // eslint-disable-line import/prefer-default-export
+const routingStore = new RouterStore();
+const history = syncHistoryWithStore(browserHistory, routingStore);
 
 ReactDOM.render((
   <Provider
@@ -27,6 +30,7 @@ ReactDOM.render((
     discounts={ new DiscountsStore() }
     orders={ new OrdersStore() }
     users={ new UsersStore() }
+    routing={ routingStore }
   >
     { routes(browserHistory) }
   </Provider>

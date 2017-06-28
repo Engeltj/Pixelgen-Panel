@@ -9,9 +9,9 @@ export default class UsersStore {
   async getUsers() {
     this.gettingUsers = true;
     try {
-      const result = await request.get('/api/useres');
+      const result = await request.get('/api/users');
       this.gettingUsers = false;
-      this.users = result.users;
+      this.users = result.users || [];
     } catch (err) {
       this.gettingUsers = false;
     }

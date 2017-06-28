@@ -8,13 +8,26 @@ export default class OrdersStore {
   @observable order = null;
 
   @action.bound
+  setLoading(val) {
+    this.loading = val;
+  }
+
+  @action.bound
+  success(orders) {
+    this.orders = orders;
+  }
+  @action.bound
+  error(errmsg) {
+    this.errorMessage = errmsg;
+  }
+
   async getOrders() {
-    this.loading = true;
+    this.setLoading(true);
 
     try {
       const result = await request.get('/api/orders/all');
-      this.orders = result.orders;
-      this.loading = false;
+      this.setLoading(false);
+      this.success(result.orders);
     } catch (err) {
       this.loading = false;
       this.errorMessage = 'Failed to obtain order details.';
