@@ -1,13 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const devConfig = require('./webpack.config');
 
 const config = {
   'devtool': 'source-map',
   'entry': {
     'app': ['babel-polyfill', './app/index']
-    // 'vendor': devConfig.vendor
   },
   'resolve': {
     'alias': {}
@@ -31,7 +29,7 @@ const config = {
       }
     }),
     new ExtractTextPlugin({
-      filename: 'style.scss'
+      filename: 'style.css'
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({

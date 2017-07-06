@@ -9,8 +9,7 @@ const config = {
       'webpack-dev-server/client?http://localhost:8000',
       'webpack/hot/only-dev-server',
       './app/index'
-    ],
-    // 'vendor.js': './app/vendor.js',
+    ]
   },
   'devtool': 'source-map',
   'output': {
