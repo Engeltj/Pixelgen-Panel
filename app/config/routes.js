@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Observer } from 'react';
 import { Route, Router, IndexRedirect, IndexRoute } from 'react-router';
-import { inject, observer } from 'mobx-react';
+import { inject, observer, observable } from 'mobx-react';
 
 import Main from '../components/layouts/Main';
 import Blank from '../components/layouts/Blank';
@@ -28,16 +28,16 @@ const userIsAuthenticated = (Component) => {
     componentDidUpdate() {
       this.checkAuth();
     }
-
+    
     checkAuth() {
-      console.log(this.props.auth.isAuthenticated);
       if (!this.props.auth.isAuthenticated) {
         this.props.routing.push('/login');
       }
+      return this.props.auth.isAuthenticated;
     }
 
     render() {
-      console.log(this.props.auth.isAuthenticated);
+      this.props.auth.isAuthenticated;
       return <Component { ...this.props }/>;
     }
 

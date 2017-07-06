@@ -52,6 +52,7 @@
       "error",
       "smart"
     ],
+    "experimentalDecorators": 0,
     "arrow-spacing": [
       "error"
     ],

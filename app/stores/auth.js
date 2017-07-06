@@ -32,13 +32,12 @@ export default class AuthorizationStore {
 
       this.hasError = false;
       this.error = null;
-      this.isAuthenticated = true;
 
       if (result.token) {
         localStorage.setItem('token', result.token);
+        this.isAuthenticated = true;
+        this.user = result.user;
       }
-
-      this.user = result.user;
     } catch (err) {
       this.signingIn = false;
       this.hasError = true;
