@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { observer, inject } from 'mobx-react';
 import _ from 'lodash';
 
-@inject('auth')
+@inject('auth', 'routing')
 @observer
 class Login extends Component {
 
@@ -10,7 +10,6 @@ class Login extends Component {
     super(props);
     _.bindAll(this, ['handleSubmit', 'handleChange', 'checkAuth']);
 
-    console.log(props);
 
     this.state = {
       'email': '',
@@ -23,7 +22,8 @@ class Login extends Component {
   };
 
   static propTypes = {
-    'auth': PropTypes.object
+    'auth': PropTypes.object.isRequired,
+    'routing': PropTypes.object.isRequired
   };
 
   componentWillMount() {
@@ -36,10 +36,11 @@ class Login extends Component {
 
   checkAuth() {
     if (this.props.auth.isAuthenticated) {
-      this.context.router.replace('/discounts');
+      this.context.router.replace('/orders');
     }
   }
 
+  
   handleSubmit(e) {
     e.preventDefault();
     const { email, password } = this.state;
@@ -52,6 +53,7 @@ class Login extends Component {
   }
 
   render() {
+    this.props.auth.isAuthenticated;
     return (
       <div className="middle-box text-center loginscreen  animated fadeIn">
         <div>
@@ -67,7 +69,7 @@ class Login extends Component {
             <div className="form-group">
               <input onChange={ this.handleChange } value={ this.state.password } type="password" name="password" className="form-control" placeholder="Password" required=""/>
             </div>
-            <button type="submit" disabled={ this.props.auth.signingIn } className="btn btn-primary block full-width m-b">Login</button>
+            { !this.props.auth.signingIn && <button type="submit" className="btn btn-primary block full-width m-b">Login</button>}
 
             { this.props.auth.signingIn && <p className="animated fadeIn">Signing in...</p> }
             { this.props.auth.hasError && <em className="animated fadeIn">{ this.props.auth.error }</em> }

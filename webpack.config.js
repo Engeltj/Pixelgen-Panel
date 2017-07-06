@@ -9,8 +9,7 @@ const config = {
       'webpack-dev-server/client?http://localhost:8000',
       'webpack/hot/only-dev-server',
       './app/index'
-    ],
-    'vendor': []
+    ]
   },
   'devtool': 'source-map',
   'output': {
@@ -19,9 +18,7 @@ const config = {
     'publicPath': '/'
   },
   'plugins': [
-    new ExtractTextPlugin('style.css', {
-      'allChunks': true
-    }),
+    new ExtractTextPlugin({filename: 'style.css', 'allChunks': true }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       '$': 'jquery',
@@ -30,17 +27,17 @@ const config = {
       'window.$': 'jquery'
 
     }),
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', Infinity),
+    new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js', minChunks: Infinity}),
     new webpack.DefinePlugin({
       'require.specified': 'require.resolve'
     })
   ],
   'module': {
-    'noParse': [],
+    'noParse': '//g',
     'loaders': [
       {
         'test': /\.js$/,
-        'loaders': ['react-hot', 'babel'],
+        'loaders': ['react-hot-loader', 'babel-loader'],
         'include': path.join(__dirname, 'app')
       },
       {
@@ -49,7 +46,7 @@ const config = {
       },
       {
         'test': /\.css$/,
-        'loader': ExtractTextPlugin.extract('style-loader', 'css-loader')
+        'loader': ExtractTextPlugin.extract({use: 'css-loader', fallback: 'style-loader'})
       },
       {
         'test': /\.(png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/,
