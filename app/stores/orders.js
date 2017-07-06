@@ -14,7 +14,7 @@ export default class OrdersStore {
 
   @action.bound
   success(orders) {
-    this.orders = orders;
+    this.orders = orders || [];
   }
   @action.bound
   error(errmsg) {

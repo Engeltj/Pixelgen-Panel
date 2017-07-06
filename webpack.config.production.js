@@ -6,17 +6,19 @@ const devConfig = require('./webpack.config');
 const config = {
   'devtool': 'source-map',
   'entry': {
-    'app': ['babel-polyfill', './app/index'],
-    'vendor': devConfig.entry.vendor
+    'app': ['babel-polyfill', './app/index']
+    // 'vendor': devConfig.vendor
   },
-  'resolve': { 'alias': {} },
+  'resolve': {
+    'alias': {}
+  },
   'output': {
     'path': path.join(__dirname, 'dist'),
     'filename': 'bundle.js',
     'publicPath': './'
   },
   'plugins': [
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
@@ -28,7 +30,9 @@ const config = {
         'warnings': false
       }
     }),
-    new ExtractTextPlugin('style.scss'),
+    new ExtractTextPlugin({
+      filename: 'style.scss'
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       '$': 'jquery',
@@ -37,20 +41,29 @@ const config = {
       'window.$': 'jquery'
 
     }),
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', Infinity)
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor.js',
+      minChunks: Infinity
+    })
   ],
   'module': {
-    'noParse': [],
-    'loaders': [
-      {
+    'noParse': '//g',
+    'loaders': [{
         'test': /\.js$/,
-        'loaders': ['react-hot', 'babel'],
+        'loaders': ['react-hot-loader', 'babel-loader'],
         'include': path.join(__dirname, 'app')
       },
       {
         'test': /\.scss$/,
-        'loader': ExtractTextPlugin.extract('style-loader', 'css-loader', 'sass-loader')
-
+        'loaders': ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap']
+      },
+      {
+        'test': /\.css$/,
+        'loader': ExtractTextPlugin.extract({
+          use: 'css-loader',
+          fallback: 'style-loader'
+        })
       },
       {
         'test': /\.(png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/,
