@@ -48,33 +48,33 @@ const config = {
   'module': {
     'noParse': '//g',
     'loaders': [{
-        'test': /\.js$/,
-        'loaders': ['react-hot-loader', 'babel-loader'],
-        'include': path.join(__dirname, 'app')
-      },
-      {
-        'test': /\.scss$/,
-        'loaders': ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap']
-      },
-      {
-        'test': /\.css$/,
-        'loader': ExtractTextPlugin.extract({
-          use: 'css-loader',
-          fallback: 'style-loader'
-        })
-      },
-      {
-        'test': /\.(png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/,
-        'loader': 'url-loader?limit=100000'
-      },
-      {
-        'test': /\.(eot|com|json|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        'loader': 'url-loader?limit=10000&mimetype=application/octet-stream'
-      },
-      {
-        'test': /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        'loader': 'url-loader?limit=10000&mimetype=image/svg+xml'
-      }
+      'test': /\.js$/,
+      'loaders': ['react-hot-loader', 'babel-loader'],
+      'include': path.join(__dirname, 'app')
+    },
+    {
+      'test': /\.scss$/,
+      'loaders': ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap']
+    },
+    {
+      'test': /\.css$/,
+      'loader': ExtractTextPlugin.extract({
+        use: 'css-loader',
+        fallback: 'style-loader'
+      })
+    },
+    {
+      'test': /\.(png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/,
+      'loader': 'url-loader?limit=100000'
+    },
+    {
+      'test': /\.(eot|com|json|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+      'loader': 'url-loader?limit=10000&mimetype=application/octet-stream'
+    },
+    {
+      'test': /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+      'loader': 'url-loader?limit=10000&mimetype=image/svg+xml'
+    }
     ]
   }
 };
