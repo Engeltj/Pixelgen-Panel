@@ -1,8 +1,8 @@
 var express = require('express'),
   app = express(),
   path = require('path'),
-  http = require('http'),
-  https = require('https');
+  http = require('http');
+  // https = require('https');
 
 app.use('/', express.static(path.join(__dirname, 'dist')));
 app.use('/', express.static(path.join(__dirname, 'public')));

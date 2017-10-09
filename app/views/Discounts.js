@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 import Header from '../components/common/Header';
 import Table from '../components/common/Table';
 import UserTableItem from '../components/users/UserTableItem';
-import IBox from '../components/common/IBox';
 import { inject, observer } from 'mobx-react';
 
 @inject('discounts', 'users')

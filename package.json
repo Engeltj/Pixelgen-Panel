@@ -2,8 +2,10 @@
   "name": "pgd-admin-panel",
   "version": "0.0.1",
   "scripts": {
-    "start": "node server.js",
-    "build": "BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.production.js"
+    "start": "node app.js",
+    "build": "BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.production.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "license": "UNLICENSED",
   "keywords": [
@@ -36,7 +38,8 @@
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.7",
     "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.5.0"
+    "webpack-dev-server": "^2.5.0",
+    "@storybook/react": "^3.1.8"
   },
   "dependencies": {
     "animate.css": "^3.1.1",
@@ -54,6 +57,7 @@
     "mobx": "^3.1.17",
     "mobx-react": "^4.2.2",
     "mobx-react-router": "^4.0.1",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.0",
     "react-dom": "^15.6.1",

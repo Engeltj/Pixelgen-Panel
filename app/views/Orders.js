@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
 import Header from '../components/common/Header';
 import Table from '../components/common/Table';
@@ -7,6 +8,10 @@ import OrderTableItem from '../components/orders/OrderTableItem';
 @inject('orders')
 @observer
 class Orders extends Component {
+
+  static propTypes = {
+    'orders': PropTypes.object.isRequired
+  };
 
   componentWillMount() {
     this.props.orders.getOrders();
